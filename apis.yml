@@ -37,3 +37,44 @@ common:
   - name: GitHub Organization
     url: https://github.com/dreamfactorysoftware
     type: GitHubOrganization
+  - name: DreamFactory | Code Automation for Generating REST APIs
+    description: 'null'
+    url: https://www.dreamfactory.com/
+    type: Website
+  - name: DreamFactory Docs | DreamFactory Docs
+    description: 'null'
+    url: >-
+      https://docs.dreamfactory.com/?_gl=1*yrriox*_gcl_au*MTgxMzQyMDU4OC4xNzQ5MTM5NjA0
+    type: Documentation
+  - name: Customer Use Cases | DreamFactory
+    description: 'null'
+    url: https://www.dreamfactory.com/stories
+    type: CaseStudies
+  - name: Whitepapers | DreamFactory
+    description: 'null'
+    url: https://www.dreamfactory.com/resources/whitepapers
+    type: WhitePapers
+  - name: Blog
+    description: 'null'
+    url: https://blog.dreamfactory.com/
+    type: Blog
+  - name: Getting Started With DreamFactory | DreamFactory
+    description: 'null'
+    url: https://guide.dreamfactory.com/docs/
+    type: Guide
+  - name: Partners | DreamFactory
+    description: 'null'
+    url: https://www.dreamfactory.com/partners
+    type: Partners
+  - name: Support Center | DreamFactory
+    description: 'null'
+    url: https://www.dreamfactory.com/support
+    type: Support
+  - name: Terms of Use | DreamFactory
+    description: 'null'
+    url: https://www.dreamfactory.com/terms-of-use
+    type: TermsOfService
+  - name: Privacy Policy
+    description: 'null'
+    url: https://www.dreamfactory.com/privacy-policy
+    type: PrivacyPolicy
