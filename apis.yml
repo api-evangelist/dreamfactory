@@ -5,7 +5,11 @@ apis:
   - aid: dreamfactory:dreamfactory
     name: DreamFactory
     tags:
-      - API
+      - Automation
+      - Deployment
+      - Documentation
+      - Generation
+      - Security
     humanURL: ' https://www.dreamfactory.com/'
     properties:
       - url: ' https://www.dreamfactory.com/'
@@ -13,7 +17,11 @@ apis:
     description: "Automate the building, securing, and documenting of REST\_APIs for data products with built-in enterprise security on bare-metal, VMs, or containers. "
 name: DreamFactory
 tags:
-  - API
+  - Automation
+  - Deployment
+  - Documentation
+  - Generation
+  - Security
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
