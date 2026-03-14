@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-service.json",
+  "title": "DreamFactory Service",
+  "description": "A service configured in a DreamFactory instance, representing a connectable resource such as a database, file storage, remote API, or scripting endpoint.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the service."
+    },
+    "name": {
+      "type": "string",
+      "description": "Unique name for the service, used in API paths."
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label for the service."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the service."
+    },
+    "type": {
+      "type": "string",
+      "description": "Service type name identifying the connector."
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the service is active."
+    },
+    "config": {
+      "type": "object",
+      "description": "Service configuration object. Schema varies by service type."
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the service was created."
+    },
+    "last_modified_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the service was last modified."
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

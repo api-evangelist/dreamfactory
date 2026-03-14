@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-app.json",
+  "title": "DreamFactory App",
+  "description": "An application registered in a DreamFactory instance, associated with an API key and optional default role for access control.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the application."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the application."
+    },
+    "api_key": {
+      "type": "string",
+      "description": "API key assigned to the application."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the application."
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the application is active."
+    },
+    "type": {
+      "type": "integer",
+      "description": "Application type identifier."
+    },
+    "role_id": {
+      "type": "integer",
+      "description": "Default role ID assigned to the application."
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the application was created."
+    },
+    "last_modified_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the application was last modified."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

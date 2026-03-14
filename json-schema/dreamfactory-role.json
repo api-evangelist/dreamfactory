@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-role.json",
+  "title": "DreamFactory Role",
+  "description": "A role in a DreamFactory instance that defines service access permissions and can be assigned to users and applications for role-based access control.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the role."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the role."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the role."
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the role is active."
+    },
+    "role_service_access_by_role_id": {
+      "type": "array",
+      "description": "Service access permissions assigned to the role.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service_id": {
+            "type": "integer",
+            "description": "ID of the service this access rule applies to."
+          },
+          "component": {
+            "type": "string",
+            "description": "Service component path the rule applies to."
+          },
+          "verb_mask": {
+            "type": "integer",
+            "description": "Bitmask of allowed HTTP verbs."
+          },
+          "requestor_mask": {
+            "type": "integer",
+            "description": "Bitmask of allowed requestor types."
+          },
+          "filters": {
+            "type": "array",
+            "description": "Filters applied to the access rule.",
+            "items": {
+              "type": "object"
+            }
+          },
+          "filter_op": {
+            "type": "string",
+            "description": "Logical operator for combining filters."
+          }
+        }
+      }
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the role was created."
+    },
+    "last_modified_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the role was last modified."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

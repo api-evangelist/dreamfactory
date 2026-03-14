@@ -19,6 +19,27 @@ apis:
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/openapi/dreamfactory-system-api-openapi.yml
         type: OpenAPI
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/asyncapi/dreamfactory-system-api-asyncapi.yml
+        type: AsyncAPI
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-admin.json
+        type: JSONSchema
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-app.json
+        type: JSONSchema
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-role.json
+        type: JSONSchema
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-service.json
+        type: JSONSchema
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-user.json
+        type: JSONSchema
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-ld/dreamfactory-context.jsonld
+        type: JSONLD
     description: >-
       The DreamFactory System API provides administrative management
       capabilities for DreamFactory instances. It allows managing

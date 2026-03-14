@@ -1,0 +1,167 @@
+asyncapi: 2.6.0
+info:
+  title: DreamFactory System API Events
+  version: 2.0.0
+  description: >-
+    Asynchronous event model for the DreamFactory System API. DreamFactory
+    provides a comprehensive event scripting system that fires events before
+    and after every API call, allowing server-side scripts (PHP, Python,
+    Node.js, or V8js) to intercept, modify, or augment request and response
+    processing. Events follow the pattern {service}.{resource}.{verb} with
+    pre-process and post-process variants.
+  contact:
+    name: DreamFactory Support
+    url: https://www.dreamfactory.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.dreamfactory.com/terms-of-use
+externalDocs:
+  description: DreamFactory Event Scripting Documentation
+  url: https://guide.dreamfactory.com/docs/event-scripting/
+defaultContentType: application/json
+channels:
+  system.admin.pre_process:
+    description: >-
+      Fired before processing any admin resource request. Scripts can
+      inspect or modify the request before it reaches the handler.
+    subscribe:
+      operationId: onAdminPreProcess
+      summary: Admin resource pre-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.admin.post_process:
+    description: >-
+      Fired after processing any admin resource request. Scripts can
+      inspect or modify the response before it is returned to the client.
+    subscribe:
+      operationId: onAdminPostProcess
+      summary: Admin resource post-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.app.pre_process:
+    description: >-
+      Fired before processing any app resource request.
+    subscribe:
+      operationId: onAppPreProcess
+      summary: App resource pre-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.app.post_process:
+    description: >-
+      Fired after processing any app resource request.
+    subscribe:
+      operationId: onAppPostProcess
+      summary: App resource post-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.role.pre_process:
+    description: >-
+      Fired before processing any role resource request.
+    subscribe:
+      operationId: onRolePreProcess
+      summary: Role resource pre-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.role.post_process:
+    description: >-
+      Fired after processing any role resource request.
+    subscribe:
+      operationId: onRolePostProcess
+      summary: Role resource post-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.service.pre_process:
+    description: >-
+      Fired before processing any service resource request.
+    subscribe:
+      operationId: onServicePreProcess
+      summary: Service resource pre-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.service.post_process:
+    description: >-
+      Fired after processing any service resource request.
+    subscribe:
+      operationId: onServicePostProcess
+      summary: Service resource post-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.user.pre_process:
+    description: >-
+      Fired before processing any user resource request.
+    subscribe:
+      operationId: onUserPreProcess
+      summary: User resource pre-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+  system.user.post_process:
+    description: >-
+      Fired after processing any user resource request.
+    subscribe:
+      operationId: onUserPostProcess
+      summary: User resource post-process event
+      message:
+        $ref: '#/components/messages/SystemEvent'
+components:
+  messages:
+    SystemEvent:
+      name: SystemEvent
+      title: DreamFactory System Event
+      summary: >-
+        An event payload delivered to server-side scripts during
+        pre-process or post-process phases of a system API call.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EventPayload'
+  schemas:
+    EventPayload:
+      type: object
+      properties:
+        request:
+          type: object
+          description: The inbound HTTP request details.
+          properties:
+            method:
+              type: string
+              description: HTTP method (GET, POST, PUT, PATCH, DELETE).
+            uri:
+              type: string
+              description: Request URI path.
+            headers:
+              type: object
+              description: HTTP request headers.
+              additionalProperties:
+                type: string
+            parameters:
+              type: object
+              description: Query parameters.
+              additionalProperties: true
+            payload:
+              type: object
+              description: Request body payload.
+              additionalProperties: true
+        response:
+          type: object
+          description: >-
+            The outbound HTTP response (available in post-process events
+            and modifiable by scripts).
+          properties:
+            status_code:
+              type: integer
+              description: HTTP status code.
+            headers:
+              type: object
+              description: HTTP response headers.
+              additionalProperties:
+                type: string
+            content:
+              description: Response body content.
+        resource:
+          type: string
+          description: The system resource being acted upon.
+        event_name:
+          type: string
+          description: >-
+            Full event name in the format
+            {service}.{resource}.{verb}.{process_type}.

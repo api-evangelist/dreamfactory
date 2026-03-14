@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "dreamfactory": "https://www.dreamfactory.com/ns/",
+    "Admin": {
+      "@id": "dreamfactory:Admin",
+      "@context": {
+        "id": "dreamfactory:adminId",
+        "name": "schema:name",
+        "first_name": "schema:givenName",
+        "last_name": "schema:familyName",
+        "email": "schema:email",
+        "is_active": "dreamfactory:isActive",
+        "created_date": "schema:dateCreated",
+        "last_modified_date": "schema:dateModified"
+      }
+    },
+    "App": {
+      "@id": "dreamfactory:App",
+      "@context": {
+        "id": "dreamfactory:appId",
+        "name": "schema:name",
+        "api_key": "dreamfactory:apiKey",
+        "description": "schema:description",
+        "is_active": "dreamfactory:isActive",
+        "type": "dreamfactory:appType",
+        "role_id": "dreamfactory:roleId",
+        "created_date": "schema:dateCreated",
+        "last_modified_date": "schema:dateModified"
+      }
+    },
+    "Role": {
+      "@id": "dreamfactory:Role",
+      "@context": {
+        "id": "dreamfactory:roleId",
+        "name": "schema:name",
+        "description": "schema:description",
+        "is_active": "dreamfactory:isActive",
+        "role_service_access_by_role_id": "dreamfactory:serviceAccess",
+        "created_date": "schema:dateCreated",
+        "last_modified_date": "schema:dateModified"
+      }
+    },
+    "Service": {
+      "@id": "dreamfactory:Service",
+      "@context": {
+        "id": "dreamfactory:serviceId",
+        "name": "schema:name",
+        "label": "schema:alternateName",
+        "description": "schema:description",
+        "type": "dreamfactory:serviceType",
+        "is_active": "dreamfactory:isActive",
+        "config": "dreamfactory:serviceConfig",
+        "created_date": "schema:dateCreated",
+        "last_modified_date": "schema:dateModified"
+      }
+    },
+    "User": {
+      "@id": "dreamfactory:User",
+      "@context": {
+        "id": "dreamfactory:userId",
+        "name": "schema:name",
+        "first_name": "schema:givenName",
+        "last_name": "schema:familyName",
+        "email": "schema:email",
+        "is_active": "dreamfactory:isActive",
+        "phone": "schema:telephone",
+        "created_date": "schema:dateCreated",
+        "last_modified_date": "schema:dateModified"
+      }
+    }
+  }
+}

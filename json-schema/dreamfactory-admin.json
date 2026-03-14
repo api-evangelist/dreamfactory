@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-admin.json",
+  "title": "DreamFactory Admin",
+  "description": "A system administrator account in a DreamFactory instance, used to manage services, apps, roles, users, and platform configuration.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the administrator."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the administrator."
+    },
+    "first_name": {
+      "type": "string",
+      "description": "First name of the administrator."
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Last name of the administrator."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address used for login."
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the admin account is active."
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the admin was created."
+    },
+    "last_modified_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the admin was last modified."
+    }
+  },
+  "required": [
+    "email",
+    "name"
+  ]
+}
