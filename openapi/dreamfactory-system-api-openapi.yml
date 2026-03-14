@@ -1,0 +1,1937 @@
+openapi: 3.1.0
+info:
+  title: DreamFactory System API
+  description: >-
+    The DreamFactory System API provides administrative management
+    capabilities for DreamFactory instances. It allows administrators to
+    manage services, apps, roles, users, CORS configurations, email
+    templates, environment settings, lookups, events, scripts, and more.
+    All system resources are accessible under the /api/v2/system/ base
+    path. Authentication requires either an X-DreamFactory-Session-Token
+    header (for system admins) or an X-DreamFactory-API-Key header (for
+    users with appropriate permissions).
+  version: 2.0.0
+  contact:
+    name: DreamFactory Support
+    url: https://www.dreamfactory.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.dreamfactory.com/terms-of-use
+externalDocs:
+  description: DreamFactory Documentation
+  url: https://guide.dreamfactory.com/docs/
+servers:
+  - url: https://{instance}/api/v2
+    description: DreamFactory instance
+    variables:
+      instance:
+        default: example.dreamfactory.com
+        description: Your DreamFactory instance hostname
+security:
+  - sessionToken: []
+  - apiKey: []
+tags:
+  - name: Admin
+    description: System administrator management
+  - name: App
+    description: Application and API key management
+  - name: AppGroup
+    description: Application group management
+  - name: CORS
+    description: Cross-Origin Resource Sharing configuration
+  - name: EmailTemplate
+    description: Email template management
+  - name: Environment
+    description: Environment information
+  - name: Event
+    description: Event management
+  - name: Limit
+    description: API rate limiting management
+  - name: Lookup
+    description: Lookup key management
+  - name: Role
+    description: Role-based access control management
+  - name: Service
+    description: Service configuration management
+  - name: ServiceType
+    description: Service type discovery
+  - name: ScriptType
+    description: Script type discovery
+  - name: User
+    description: User management
+  - name: Custom
+    description: Custom settings management
+  - name: Package
+    description: Package import and export
+paths:
+  /system/admin:
+    get:
+      operationId: listAdmins
+      summary: List administrators
+      description: Retrieve a list of system administrators.
+      tags:
+        - Admin
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createAdmin
+      summary: Create administrator
+      description: Create one or more system administrators.
+      tags:
+        - Admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminRequest'
+      responses:
+        '201':
+          description: Admin created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/admin/{id}:
+    get:
+      operationId: getAdmin
+      summary: Get administrator
+      description: Retrieve a specific administrator by ID.
+      tags:
+        - Admin
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateAdmin
+      summary: Update administrator
+      description: Update a specific administrator by ID.
+      tags:
+        - Admin
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminRequest'
+      responses:
+        '200':
+          description: Admin updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteAdmin
+      summary: Delete administrator
+      description: Delete a specific administrator by ID.
+      tags:
+        - Admin
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Admin deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/app:
+    get:
+      operationId: listApps
+      summary: List applications
+      description: Retrieve a list of registered applications and their API keys.
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createApp
+      summary: Create application
+      description: Create a new application registration.
+      tags:
+        - App
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRequest'
+      responses:
+        '201':
+          description: App created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/app/{id}:
+    get:
+      operationId: getApp
+      summary: Get application
+      description: Retrieve a specific application by ID.
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateApp
+      summary: Update application
+      description: Update a specific application by ID.
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRequest'
+      responses:
+        '200':
+          description: App updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteApp
+      summary: Delete application
+      description: Delete a specific application by ID.
+      tags:
+        - App
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: App deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/app_group:
+    get:
+      operationId: listAppGroups
+      summary: List application groups
+      description: Retrieve a list of application groups.
+      tags:
+        - AppGroup
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createAppGroup
+      summary: Create application group
+      description: Create a new application group.
+      tags:
+        - AppGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppGroupRequest'
+      responses:
+        '201':
+          description: App group created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/cors:
+    get:
+      operationId: listCorsConfigs
+      summary: List CORS configurations
+      description: Retrieve a list of CORS configurations.
+      tags:
+        - CORS
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createCorsConfig
+      summary: Create CORS configuration
+      description: Create a new CORS configuration.
+      tags:
+        - CORS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CorsRequest'
+      responses:
+        '201':
+          description: CORS config created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/cors/{id}:
+    get:
+      operationId: getCorsConfig
+      summary: Get CORS configuration
+      description: Retrieve a specific CORS configuration by ID.
+      tags:
+        - CORS
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateCorsConfig
+      summary: Update CORS configuration
+      description: Update a specific CORS configuration by ID.
+      tags:
+        - CORS
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CorsRequest'
+      responses:
+        '200':
+          description: CORS config updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteCorsConfig
+      summary: Delete CORS configuration
+      description: Delete a specific CORS configuration by ID.
+      tags:
+        - CORS
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: CORS config deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/email_template:
+    get:
+      operationId: listEmailTemplates
+      summary: List email templates
+      description: Retrieve a list of email templates.
+      tags:
+        - EmailTemplate
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createEmailTemplate
+      summary: Create email template
+      description: Create a new email template.
+      tags:
+        - EmailTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '201':
+          description: Email template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/environment:
+    get:
+      operationId: getEnvironment
+      summary: Get environment information
+      description: >-
+        Retrieve environment information including platform details,
+        authentication options, and server configuration.
+      tags:
+        - Environment
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/event:
+    get:
+      operationId: listEvents
+      summary: List events
+      description: Retrieve a list of available system events.
+      tags:
+        - Event
+      parameters:
+        - name: as_list
+          in: query
+          description: Return events as a simple list.
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/limit:
+    get:
+      operationId: listLimits
+      summary: List API limits
+      description: Retrieve a list of API rate limits.
+      tags:
+        - Limit
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createLimit
+      summary: Create API limit
+      description: Create a new API rate limit.
+      tags:
+        - Limit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LimitRequest'
+      responses:
+        '201':
+          description: Limit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/limit/{id}:
+    get:
+      operationId: getLimit
+      summary: Get API limit
+      description: Retrieve a specific API limit by ID.
+      tags:
+        - Limit
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateLimit
+      summary: Update API limit
+      description: Update a specific API limit by ID.
+      tags:
+        - Limit
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LimitRequest'
+      responses:
+        '200':
+          description: Limit updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteLimit
+      summary: Delete API limit
+      description: Delete a specific API limit by ID.
+      tags:
+        - Limit
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Limit deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/limit_cache:
+    get:
+      operationId: listLimitCache
+      summary: List limit cache
+      description: >-
+        Retrieve current limit volume levels to check how close
+        limits are to being reached.
+      tags:
+        - Limit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: resetLimitCache
+      summary: Reset limit counters
+      description: Reset limit counters manually.
+      tags:
+        - Limit
+      responses:
+        '200':
+          description: Limit cache reset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/lookup:
+    get:
+      operationId: listLookups
+      summary: List lookups
+      description: Retrieve a list of system lookup keys.
+      tags:
+        - Lookup
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LookupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createLookup
+      summary: Create lookup
+      description: Create a new system lookup key.
+      tags:
+        - Lookup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupRequest'
+      responses:
+        '201':
+          description: Lookup created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LookupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/role:
+    get:
+      operationId: listRoles
+      summary: List roles
+      description: Retrieve a list of roles.
+      tags:
+        - Role
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createRole
+      summary: Create role
+      description: Create a new role for access control.
+      tags:
+        - Role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+      responses:
+        '201':
+          description: Role created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/role/{id}:
+    get:
+      operationId: getRole
+      summary: Get role
+      description: Retrieve a specific role by ID.
+      tags:
+        - Role
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateRole
+      summary: Update role
+      description: Update a specific role by ID.
+      tags:
+        - Role
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+      responses:
+        '200':
+          description: Role updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteRole
+      summary: Delete role
+      description: Delete a specific role by ID.
+      tags:
+        - Role
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Role deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/service:
+    get:
+      operationId: listServices
+      summary: List services
+      description: Retrieve a list of configured services.
+      tags:
+        - Service
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createService
+      summary: Create service
+      description: Create a new service configuration (e.g., database, file storage, email).
+      tags:
+        - Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequest'
+      responses:
+        '201':
+          description: Service created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/service/{id}:
+    get:
+      operationId: getService
+      summary: Get service
+      description: Retrieve a specific service by ID.
+      tags:
+        - Service
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateService
+      summary: Update service
+      description: Update a specific service by ID.
+      tags:
+        - Service
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequest'
+      responses:
+        '200':
+          description: Service updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteService
+      summary: Delete service
+      description: Delete a specific service by ID.
+      tags:
+        - Service
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Service deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/service_type:
+    get:
+      operationId: listServiceTypes
+      summary: List service types
+      description: >-
+        Retrieve a list of supported service types and their
+        associated configuration schemas.
+      tags:
+        - ServiceType
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTypeListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/script_type:
+    get:
+      operationId: listScriptTypes
+      summary: List script types
+      description: >-
+        Retrieve a list of supported and configured script types
+        available on the instance.
+      tags:
+        - ScriptType
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/user:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: Retrieve a list of registered users.
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createUser
+      summary: Create user
+      description: Create one or more users.
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/user/{id}:
+    get:
+      operationId: getUser
+      summary: Get user
+      description: Retrieve a specific user by ID.
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/related'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      operationId: updateUser
+      summary: Update user
+      description: Update a specific user by ID.
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    delete:
+      operationId: deleteUser
+      summary: Delete user
+      description: Delete a specific user by ID.
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: User deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/custom:
+    get:
+      operationId: listCustomSettings
+      summary: List custom settings
+      description: Retrieve a list of custom system settings.
+      tags:
+        - Custom
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: setCustomSettings
+      summary: Set custom settings
+      description: Create or update custom system settings.
+      tags:
+        - Custom
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Settings updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /system/package:
+    get:
+      operationId: listPackages
+      summary: List packages
+      description: Retrieve a list of available packages for import/export.
+      tags:
+        - Package
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: importPackage
+      summary: Import package
+      description: Import a DreamFactory package file.
+      tags:
+        - Package
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                import_url:
+                  type: string
+                  description: URL to import the package from.
+      responses:
+        '200':
+          description: Package imported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      name: X-DreamFactory-Session-Token
+      in: header
+      description: Session token obtained after admin login.
+    apiKey:
+      type: apiKey
+      name: X-DreamFactory-API-Key
+      in: header
+      description: API key associated with a registered application.
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    order:
+      name: order
+      in: query
+      description: SQL-like order containing field and direction.
+      schema:
+        type: string
+    related:
+      name: related
+      in: query
+      description: Comma-delimited list of related resources to include.
+      schema:
+        type: string
+  schemas:
+    AdminRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the administrator.
+        first_name:
+          type: string
+          description: First name.
+        last_name:
+          type: string
+          description: Last name.
+        email:
+          type: string
+          format: email
+          description: Email address (used for login).
+        password:
+          type: string
+          description: Password for the administrator.
+        is_active:
+          type: boolean
+          description: Whether the admin account is active.
+      required:
+        - email
+        - name
+    AdminResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        is_active:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    AdminListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminResponse'
+    AppRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the application.
+        api_key:
+          type: string
+          description: API key for the application.
+        description:
+          type: string
+          description: Description of the application.
+        is_active:
+          type: boolean
+          description: Whether the application is active.
+        type:
+          type: integer
+          description: Application type identifier.
+        role_id:
+          type: integer
+          description: Default role ID for the application.
+      required:
+        - name
+    AppResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        api_key:
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
+        type:
+          type: integer
+        role_id:
+          type: integer
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    AppListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppResponse'
+    AppGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the application group.
+        description:
+          type: string
+          description: Description of the group.
+      required:
+        - name
+    CorsRequest:
+      type: object
+      properties:
+        path:
+          type: string
+          description: API path to apply CORS to.
+        origin:
+          type: string
+          description: Allowed origin.
+        header:
+          type: string
+          description: Allowed headers.
+        method:
+          type: integer
+          description: Bitmask of allowed HTTP methods.
+        max_age:
+          type: integer
+          description: Max age for preflight caching in seconds.
+        enabled:
+          type: boolean
+          description: Whether CORS config is enabled.
+      required:
+        - path
+        - origin
+    CorsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        path:
+          type: string
+        origin:
+          type: string
+        header:
+          type: string
+        method:
+          type: integer
+        max_age:
+          type: integer
+        enabled:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    CorsListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorsResponse'
+    EmailTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Template name.
+        description:
+          type: string
+          description: Template description.
+        to:
+          type: string
+          description: Default recipient email addresses.
+        cc:
+          type: string
+          description: Default CC email addresses.
+        bcc:
+          type: string
+          description: Default BCC email addresses.
+        subject:
+          type: string
+          description: Email subject template.
+        body_text:
+          type: string
+          description: Plain text body template.
+        body_html:
+          type: string
+          description: HTML body template.
+        from_name:
+          type: string
+          description: Sender display name.
+        from_email:
+          type: string
+          format: email
+          description: Sender email address.
+        reply_to_name:
+          type: string
+          description: Reply-to display name.
+        reply_to_email:
+          type: string
+          format: email
+          description: Reply-to email address.
+      required:
+        - name
+    EnvironmentResponse:
+      type: object
+      properties:
+        platform:
+          type: object
+          properties:
+            version:
+              type: string
+            is_hosted:
+              type: boolean
+        authentication:
+          type: object
+        server:
+          type: object
+    LimitRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the limit.
+        description:
+          type: string
+          description: Description of the limit.
+        type:
+          type: string
+          description: Type of limit (instance, each_user, each_service, etc.).
+        rate:
+          type: integer
+          description: Number of allowed API calls in the period.
+        period:
+          type: string
+          description: Time period for the limit (minute, hour, day, etc.).
+        service_id:
+          type: integer
+          description: Service ID the limit applies to.
+        role_id:
+          type: integer
+          description: Role ID the limit applies to.
+        user_id:
+          type: integer
+          description: User ID the limit applies to.
+        is_active:
+          type: boolean
+          description: Whether the limit is active.
+      required:
+        - name
+        - type
+        - rate
+        - period
+    LimitResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        rate:
+          type: integer
+        period:
+          type: string
+        service_id:
+          type: integer
+        role_id:
+          type: integer
+        user_id:
+          type: integer
+        is_active:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    LimitListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/LimitResponse'
+    LookupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Lookup key name.
+        value:
+          type: string
+          description: Lookup value.
+        private:
+          type: boolean
+          description: Whether the lookup is private (hidden from clients).
+        description:
+          type: string
+          description: Description of the lookup.
+      required:
+        - name
+    LookupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        value:
+          type: string
+        private:
+          type: boolean
+        description:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    LookupListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/LookupResponse'
+    RoleRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the role.
+        description:
+          type: string
+          description: Description of the role.
+        is_active:
+          type: boolean
+          description: Whether the role is active.
+        role_service_access_by_role_id:
+          type: array
+          description: Service access permissions for the role.
+          items:
+            type: object
+            properties:
+              service_id:
+                type: integer
+              component:
+                type: string
+              verb_mask:
+                type: integer
+              requestor_mask:
+                type: integer
+              filters:
+                type: array
+                items:
+                  type: object
+              filter_op:
+                type: string
+      required:
+        - name
+    RoleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    RoleListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleResponse'
+    ServiceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the service (used in API paths).
+        label:
+          type: string
+          description: Display label for the service.
+        description:
+          type: string
+          description: Description of the service.
+        type:
+          type: string
+          description: Service type name.
+        is_active:
+          type: boolean
+          description: Whether the service is active.
+        config:
+          type: object
+          description: >-
+            Service configuration object. Schema depends on the
+            service type.
+      required:
+        - name
+        - type
+    ServiceResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        is_active:
+          type: boolean
+        config:
+          type: object
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    ServiceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceResponse'
+    ServiceTypeListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              label:
+                type: string
+              description:
+                type: string
+              group:
+                type: string
+              singleton:
+                type: boolean
+              config_schema:
+                type: array
+                items:
+                  type: object
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name.
+        first_name:
+          type: string
+          description: First name.
+        last_name:
+          type: string
+          description: Last name.
+        email:
+          type: string
+          format: email
+          description: Email address (used for login).
+        password:
+          type: string
+          description: Password for the user.
+        is_active:
+          type: boolean
+          description: Whether the user account is active.
+        phone:
+          type: string
+          description: Phone number.
+      required:
+        - email
+        - name
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        is_active:
+          type: boolean
+        phone:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    UserListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+    ResourceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            type: object
+    ResourceResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

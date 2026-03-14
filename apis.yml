@@ -2,19 +2,29 @@ aid: dreamfactory
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/apis.yml
 apis:
-  - aid: dreamfactory:dreamfactory
-    name: DreamFactory
+  - aid: dreamfactory:system-api
+    name: DreamFactory System API
     tags:
       - Automation
       - Deployment
       - Documentation
       - Generation
       - Security
-    humanURL: ' https://www.dreamfactory.com/'
+      - Administration
+    humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+    baseURL: https://{instance}/api/v2/system
     properties:
-      - url: ' https://www.dreamfactory.com/'
+      - url: https://guide.dreamfactory.com/docs/using-the-system-apis/
         type: Documentation
-    description: "Automate the building, securing, and documenting of REST\_APIs for data products with built-in enterprise security on bare-metal, VMs, or containers. "
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/openapi/dreamfactory-system-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The DreamFactory System API provides administrative management
+      capabilities for DreamFactory instances. It allows managing
+      services, apps, roles, users, CORS configurations, email
+      templates, environment settings, lookups, rate limits, events,
+      scripts, and more via REST endpoints under /api/v2/system/.
 name: DreamFactory
 tags:
   - Automation
@@ -143,7 +153,7 @@ common:
       - name: Restful API Access
       - name: Secure Data Exchange
 created: '2025-06-05'
-modified: '2025-06-10'
+modified: '2026-03-14'
 position: Consumer
 description: "Automate the building, securing, and documenting of REST\_APIs for data products with built-in enterprise security on bare-metal, VMs, or containers. "
 maintainers:
