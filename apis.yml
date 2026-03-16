@@ -174,10 +174,10 @@ common:
       - name: Restful API Access
       - name: Secure Data Exchange
 created: '2025-06-05'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: "Automate the building, securing, and documenting of REST\_APIs for data products with built-in enterprise security on bare-metal, VMs, or containers. "
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
