@@ -68,7 +68,7 @@ paths:
   /system/admin:
     get:
       operationId: listAdmins
-      summary: List administrators
+      summary: DreamFactory List administrators
       description: Retrieve a list of system administrators.
       tags:
         - Admin
@@ -92,7 +92,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createAdmin
-      summary: Create administrator
+      summary: DreamFactory Create administrator
       description: Create one or more system administrators.
       tags:
         - Admin
@@ -118,7 +118,7 @@ paths:
   /system/admin/{id}:
     get:
       operationId: getAdmin
-      summary: Get administrator
+      summary: DreamFactory Get administrator
       description: Retrieve a specific administrator by ID.
       tags:
         - Admin
@@ -141,7 +141,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateAdmin
-      summary: Update administrator
+      summary: DreamFactory Update administrator
       description: Update a specific administrator by ID.
       tags:
         - Admin
@@ -170,7 +170,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteAdmin
-      summary: Delete administrator
+      summary: DreamFactory Delete administrator
       description: Delete a specific administrator by ID.
       tags:
         - Admin
@@ -192,7 +192,7 @@ paths:
   /system/app:
     get:
       operationId: listApps
-      summary: List applications
+      summary: DreamFactory List applications
       description: Retrieve a list of registered applications and their API keys.
       tags:
         - App
@@ -216,7 +216,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createApp
-      summary: Create application
+      summary: DreamFactory Create application
       description: Create a new application registration.
       tags:
         - App
@@ -242,7 +242,7 @@ paths:
   /system/app/{id}:
     get:
       operationId: getApp
-      summary: Get application
+      summary: DreamFactory Get application
       description: Retrieve a specific application by ID.
       tags:
         - App
@@ -265,7 +265,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateApp
-      summary: Update application
+      summary: DreamFactory Update application
       description: Update a specific application by ID.
       tags:
         - App
@@ -294,7 +294,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteApp
-      summary: Delete application
+      summary: DreamFactory Delete application
       description: Delete a specific application by ID.
       tags:
         - App
@@ -316,7 +316,7 @@ paths:
   /system/app_group:
     get:
       operationId: listAppGroups
-      summary: List application groups
+      summary: DreamFactory List application groups
       description: Retrieve a list of application groups.
       tags:
         - AppGroup
@@ -338,7 +338,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createAppGroup
-      summary: Create application group
+      summary: DreamFactory Create application group
       description: Create a new application group.
       tags:
         - AppGroup
@@ -364,7 +364,7 @@ paths:
   /system/cors:
     get:
       operationId: listCorsConfigs
-      summary: List CORS configurations
+      summary: DreamFactory List CORS configurations
       description: Retrieve a list of CORS configurations.
       tags:
         - CORS
@@ -386,7 +386,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createCorsConfig
-      summary: Create CORS configuration
+      summary: DreamFactory Create CORS configuration
       description: Create a new CORS configuration.
       tags:
         - CORS
@@ -412,7 +412,7 @@ paths:
   /system/cors/{id}:
     get:
       operationId: getCorsConfig
-      summary: Get CORS configuration
+      summary: DreamFactory Get CORS configuration
       description: Retrieve a specific CORS configuration by ID.
       tags:
         - CORS
@@ -433,7 +433,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateCorsConfig
-      summary: Update CORS configuration
+      summary: DreamFactory Update CORS configuration
       description: Update a specific CORS configuration by ID.
       tags:
         - CORS
@@ -462,7 +462,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteCorsConfig
-      summary: Delete CORS configuration
+      summary: DreamFactory Delete CORS configuration
       description: Delete a specific CORS configuration by ID.
       tags:
         - CORS
@@ -484,7 +484,7 @@ paths:
   /system/email_template:
     get:
       operationId: listEmailTemplates
-      summary: List email templates
+      summary: DreamFactory List email templates
       description: Retrieve a list of email templates.
       tags:
         - EmailTemplate
@@ -506,7 +506,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createEmailTemplate
-      summary: Create email template
+      summary: DreamFactory Create email template
       description: Create a new email template.
       tags:
         - EmailTemplate
@@ -532,7 +532,7 @@ paths:
   /system/environment:
     get:
       operationId: getEnvironment
-      summary: Get environment information
+      summary: DreamFactory Get environment information
       description: >-
         Retrieve environment information including platform details,
         authentication options, and server configuration.
@@ -552,7 +552,7 @@ paths:
   /system/event:
     get:
       operationId: listEvents
-      summary: List events
+      summary: DreamFactory List events
       description: Retrieve a list of available system events.
       tags:
         - Event
@@ -576,7 +576,7 @@ paths:
   /system/limit:
     get:
       operationId: listLimits
-      summary: List API limits
+      summary: DreamFactory List API limits
       description: Retrieve a list of API rate limits.
       tags:
         - Limit
@@ -598,7 +598,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createLimit
-      summary: Create API limit
+      summary: DreamFactory Create API limit
       description: Create a new API rate limit.
       tags:
         - Limit
@@ -624,7 +624,7 @@ paths:
   /system/limit/{id}:
     get:
       operationId: getLimit
-      summary: Get API limit
+      summary: DreamFactory Get API limit
       description: Retrieve a specific API limit by ID.
       tags:
         - Limit
@@ -645,7 +645,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateLimit
-      summary: Update API limit
+      summary: DreamFactory Update API limit
       description: Update a specific API limit by ID.
       tags:
         - Limit
@@ -674,7 +674,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteLimit
-      summary: Delete API limit
+      summary: DreamFactory Delete API limit
       description: Delete a specific API limit by ID.
       tags:
         - Limit
@@ -696,7 +696,7 @@ paths:
   /system/limit_cache:
     get:
       operationId: listLimitCache
-      summary: List limit cache
+      summary: DreamFactory List limit cache
       description: >-
         Retrieve current limit volume levels to check how close
         limits are to being reached.
@@ -715,7 +715,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: resetLimitCache
-      summary: Reset limit counters
+      summary: DreamFactory Reset limit counters
       description: Reset limit counters manually.
       tags:
         - Limit
@@ -733,7 +733,7 @@ paths:
   /system/lookup:
     get:
       operationId: listLookups
-      summary: List lookups
+      summary: DreamFactory List lookups
       description: Retrieve a list of system lookup keys.
       tags:
         - Lookup
@@ -755,7 +755,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createLookup
-      summary: Create lookup
+      summary: DreamFactory Create lookup
       description: Create a new system lookup key.
       tags:
         - Lookup
@@ -781,7 +781,7 @@ paths:
   /system/role:
     get:
       operationId: listRoles
-      summary: List roles
+      summary: DreamFactory List roles
       description: Retrieve a list of roles.
       tags:
         - Role
@@ -805,7 +805,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createRole
-      summary: Create role
+      summary: DreamFactory Create role
       description: Create a new role for access control.
       tags:
         - Role
@@ -831,7 +831,7 @@ paths:
   /system/role/{id}:
     get:
       operationId: getRole
-      summary: Get role
+      summary: DreamFactory Get role
       description: Retrieve a specific role by ID.
       tags:
         - Role
@@ -854,7 +854,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateRole
-      summary: Update role
+      summary: DreamFactory Update role
       description: Update a specific role by ID.
       tags:
         - Role
@@ -883,7 +883,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteRole
-      summary: Delete role
+      summary: DreamFactory Delete role
       description: Delete a specific role by ID.
       tags:
         - Role
@@ -905,7 +905,7 @@ paths:
   /system/service:
     get:
       operationId: listServices
-      summary: List services
+      summary: DreamFactory List services
       description: Retrieve a list of configured services.
       tags:
         - Service
@@ -929,7 +929,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createService
-      summary: Create service
+      summary: DreamFactory Create service
       description: Create a new service configuration (e.g., database, file storage, email).
       tags:
         - Service
@@ -955,7 +955,7 @@ paths:
   /system/service/{id}:
     get:
       operationId: getService
-      summary: Get service
+      summary: DreamFactory Get service
       description: Retrieve a specific service by ID.
       tags:
         - Service
@@ -978,7 +978,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateService
-      summary: Update service
+      summary: DreamFactory Update service
       description: Update a specific service by ID.
       tags:
         - Service
@@ -1007,7 +1007,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteService
-      summary: Delete service
+      summary: DreamFactory Delete service
       description: Delete a specific service by ID.
       tags:
         - Service
@@ -1029,7 +1029,7 @@ paths:
   /system/service_type:
     get:
       operationId: listServiceTypes
-      summary: List service types
+      summary: DreamFactory List service types
       description: >-
         Retrieve a list of supported service types and their
         associated configuration schemas.
@@ -1052,7 +1052,7 @@ paths:
   /system/script_type:
     get:
       operationId: listScriptTypes
-      summary: List script types
+      summary: DreamFactory List script types
       description: >-
         Retrieve a list of supported and configured script types
         available on the instance.
@@ -1072,7 +1072,7 @@ paths:
   /system/user:
     get:
       operationId: listUsers
-      summary: List users
+      summary: DreamFactory List users
       description: Retrieve a list of registered users.
       tags:
         - User
@@ -1096,7 +1096,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: createUser
-      summary: Create user
+      summary: DreamFactory Create user
       description: Create one or more users.
       tags:
         - User
@@ -1122,7 +1122,7 @@ paths:
   /system/user/{id}:
     get:
       operationId: getUser
-      summary: Get user
+      summary: DreamFactory Get user
       description: Retrieve a specific user by ID.
       tags:
         - User
@@ -1145,7 +1145,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     patch:
       operationId: updateUser
-      summary: Update user
+      summary: DreamFactory Update user
       description: Update a specific user by ID.
       tags:
         - User
@@ -1174,7 +1174,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     delete:
       operationId: deleteUser
-      summary: Delete user
+      summary: DreamFactory Delete user
       description: Delete a specific user by ID.
       tags:
         - User
@@ -1196,7 +1196,7 @@ paths:
   /system/custom:
     get:
       operationId: listCustomSettings
-      summary: List custom settings
+      summary: DreamFactory List custom settings
       description: Retrieve a list of custom system settings.
       tags:
         - Custom
@@ -1213,7 +1213,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: setCustomSettings
-      summary: Set custom settings
+      summary: DreamFactory Set custom settings
       description: Create or update custom system settings.
       tags:
         - Custom
@@ -1237,7 +1237,7 @@ paths:
   /system/package:
     get:
       operationId: listPackages
-      summary: List packages
+      summary: DreamFactory List packages
       description: Retrieve a list of available packages for import/export.
       tags:
         - Package
@@ -1254,7 +1254,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: importPackage
-      summary: Import package
+      summary: DreamFactory Import package
       description: Import a DreamFactory package file.
       tags:
         - Package

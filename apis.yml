@@ -176,7 +176,9 @@ common:
 created: '2025-06-05'
 modified: '2026-03-16'
 position: Consumer
-description: "Automate the building, securing, and documenting of REST\_APIs for data products with built-in enterprise security on bare-metal, VMs, or containers. "
+description: >-
+  Automate the building, securing, and documenting of REST APIs for data products
+  with built-in enterprise security on bare-metal, VMs, or containers.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
