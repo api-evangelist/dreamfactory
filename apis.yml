@@ -5,12 +5,12 @@ apis:
   - aid: dreamfactory:system-api
     name: DreamFactory System API
     tags:
+      - Administration
       - Automation
       - Deployment
       - Documentation
       - Generation
       - Security
-      - Administration
     humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
     baseURL: https://{instance}/api/v2/system
     properties:

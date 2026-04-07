@@ -40,6 +40,8 @@ tags:
     description: Application group management
   - name: CORS
     description: Cross-Origin Resource Sharing configuration
+  - name: Custom
+    description: Custom settings management
   - name: EmailTemplate
     description: Email template management
   - name: Environment
@@ -50,20 +52,16 @@ tags:
     description: API rate limiting management
   - name: Lookup
     description: Lookup key management
-  - name: Role
-    description: Role-based access control management
-  - name: Service
-    description: Service configuration management
-  - name: ServiceType
-    description: Service type discovery
-  - name: ScriptType
-    description: Script type discovery
-  - name: User
-    description: User management
-  - name: Custom
-    description: Custom settings management
   - name: Package
     description: Package import and export
+  - name: Role
+    description: Role-based access control management
+  - name: ScriptType
+    description: Script type discovery
+  - name: ServiceType
+    description: Service type discovery
+  - name: User
+    description: User management
 paths:
   /system/admin:
     get:
@@ -907,8 +905,7 @@ paths:
       operationId: listServices
       summary: DreamFactory List services
       description: Retrieve a list of configured services.
-      tags:
-        - Service
+      tags: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/filter'
@@ -931,8 +928,7 @@ paths:
       operationId: createService
       summary: DreamFactory Create service
       description: Create a new service configuration (e.g., database, file storage, email).
-      tags:
-        - Service
+      tags: []
       requestBody:
         required: true
         content:
@@ -957,8 +953,7 @@ paths:
       operationId: getService
       summary: DreamFactory Get service
       description: Retrieve a specific service by ID.
-      tags:
-        - Service
+      tags: []
       parameters:
         - $ref: '#/components/parameters/id'
         - $ref: '#/components/parameters/fields'
@@ -980,8 +975,7 @@ paths:
       operationId: updateService
       summary: DreamFactory Update service
       description: Update a specific service by ID.
-      tags:
-        - Service
+      tags: []
       parameters:
         - $ref: '#/components/parameters/id'
       requestBody:
@@ -1009,8 +1003,7 @@ paths:
       operationId: deleteService
       summary: DreamFactory Delete service
       description: Delete a specific service by ID.
-      tags:
-        - Service
+      tags: []
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
