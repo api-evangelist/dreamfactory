@@ -1,0 +1,13 @@
+{
+  "repo": "dreamfactory",
+  "feeds": [
+    {
+      "source": "https://blog.dreamfactory.com/",
+      "feed_url": "https://blog.dreamfactory.com/rss.xml",
+      "saved": 10,
+      "title": "Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:27:10Z"
+}
