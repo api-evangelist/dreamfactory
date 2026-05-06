@@ -1,0 +1,1552 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: DreamFactory System API
+  description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It
+    allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings,
+    lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication
+    requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users
+    with appropriate permissions).
+  tags:
+  - Dreamfactory
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: dreamfactory
+    baseUri: https://example.dreamfactory.com/api/v2
+    description: DreamFactory System API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: X-DreamFactory-Session-Token
+      value: '{{DREAMFACTORY_TOKEN}}'
+    resources:
+    - name: system-admin
+      path: /system/admin
+      operations:
+      - name: listadmins
+        method: GET
+        description: DreamFactory List administrators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createadmin
+        method: POST
+        description: DreamFactory Create administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-admin-id
+      path: /system/admin/{id}
+      operations:
+      - name: getadmin
+        method: GET
+        description: DreamFactory Get administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateadmin
+        method: PATCH
+        description: DreamFactory Update administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteadmin
+        method: DELETE
+        description: DreamFactory Delete administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-app
+      path: /system/app
+      operations:
+      - name: listapps
+        method: GET
+        description: DreamFactory List applications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapp
+        method: POST
+        description: DreamFactory Create application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-app-id
+      path: /system/app/{id}
+      operations:
+      - name: getapp
+        method: GET
+        description: DreamFactory Get application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapp
+        method: PATCH
+        description: DreamFactory Update application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapp
+        method: DELETE
+        description: DreamFactory Delete application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-app-group
+      path: /system/app_group
+      operations:
+      - name: listappgroups
+        method: GET
+        description: DreamFactory List application groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createappgroup
+        method: POST
+        description: DreamFactory Create application group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-cors
+      path: /system/cors
+      operations:
+      - name: listcorsconfigs
+        method: GET
+        description: DreamFactory List CORS configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcorsconfig
+        method: POST
+        description: DreamFactory Create CORS configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-cors-id
+      path: /system/cors/{id}
+      operations:
+      - name: getcorsconfig
+        method: GET
+        description: DreamFactory Get CORS configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecorsconfig
+        method: PATCH
+        description: DreamFactory Update CORS configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecorsconfig
+        method: DELETE
+        description: DreamFactory Delete CORS configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-email-template
+      path: /system/email_template
+      operations:
+      - name: listemailtemplates
+        method: GET
+        description: DreamFactory List email templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createemailtemplate
+        method: POST
+        description: DreamFactory Create email template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-environment
+      path: /system/environment
+      operations:
+      - name: getenvironment
+        method: GET
+        description: DreamFactory Get environment information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-event
+      path: /system/event
+      operations:
+      - name: listevents
+        method: GET
+        description: DreamFactory List events
+        inputParameters:
+        - name: as_list
+          in: query
+          type: boolean
+          description: Return events as a simple list.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-limit
+      path: /system/limit
+      operations:
+      - name: listlimits
+        method: GET
+        description: DreamFactory List API limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlimit
+        method: POST
+        description: DreamFactory Create API limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-limit-id
+      path: /system/limit/{id}
+      operations:
+      - name: getlimit
+        method: GET
+        description: DreamFactory Get API limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelimit
+        method: PATCH
+        description: DreamFactory Update API limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletelimit
+        method: DELETE
+        description: DreamFactory Delete API limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-limit-cache
+      path: /system/limit_cache
+      operations:
+      - name: listlimitcache
+        method: GET
+        description: DreamFactory List limit cache
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: resetlimitcache
+        method: DELETE
+        description: DreamFactory Reset limit counters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-lookup
+      path: /system/lookup
+      operations:
+      - name: listlookups
+        method: GET
+        description: DreamFactory List lookups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlookup
+        method: POST
+        description: DreamFactory Create lookup
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-role
+      path: /system/role
+      operations:
+      - name: listroles
+        method: GET
+        description: DreamFactory List roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrole
+        method: POST
+        description: DreamFactory Create role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-role-id
+      path: /system/role/{id}
+      operations:
+      - name: getrole
+        method: GET
+        description: DreamFactory Get role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updaterole
+        method: PATCH
+        description: DreamFactory Update role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleterole
+        method: DELETE
+        description: DreamFactory Delete role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-service
+      path: /system/service
+      operations:
+      - name: listservices
+        method: GET
+        description: DreamFactory List services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createservice
+        method: POST
+        description: DreamFactory Create service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-service-id
+      path: /system/service/{id}
+      operations:
+      - name: getservice
+        method: GET
+        description: DreamFactory Get service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateservice
+        method: PATCH
+        description: DreamFactory Update service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteservice
+        method: DELETE
+        description: DreamFactory Delete service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-service-type
+      path: /system/service_type
+      operations:
+      - name: listservicetypes
+        method: GET
+        description: DreamFactory List service types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-script-type
+      path: /system/script_type
+      operations:
+      - name: listscripttypes
+        method: GET
+        description: DreamFactory List script types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-user
+      path: /system/user
+      operations:
+      - name: listusers
+        method: GET
+        description: DreamFactory List users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createuser
+        method: POST
+        description: DreamFactory Create user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-user-id
+      path: /system/user/{id}
+      operations:
+      - name: getuser
+        method: GET
+        description: DreamFactory Get user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: PATCH
+        description: DreamFactory Update user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuser
+        method: DELETE
+        description: DreamFactory Delete user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-custom
+      path: /system/custom
+      operations:
+      - name: listcustomsettings
+        method: GET
+        description: DreamFactory List custom settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setcustomsettings
+        method: POST
+        description: DreamFactory Set custom settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: system-package
+      path: /system/package
+      operations:
+      - name: listpackages
+        method: GET
+        description: DreamFactory List packages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: importpackage
+        method: POST
+        description: DreamFactory Import package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: dreamfactory-rest
+    description: REST adapter for DreamFactory System API.
+    resources:
+    - path: /system/admin
+      name: listadmins
+      operations:
+      - method: GET
+        name: listadmins
+        description: DreamFactory List administrators
+        call: dreamfactory.listadmins
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/admin
+      name: createadmin
+      operations:
+      - method: POST
+        name: createadmin
+        description: DreamFactory Create administrator
+        call: dreamfactory.createadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/admin/{id}
+      name: getadmin
+      operations:
+      - method: GET
+        name: getadmin
+        description: DreamFactory Get administrator
+        call: dreamfactory.getadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/admin/{id}
+      name: updateadmin
+      operations:
+      - method: PATCH
+        name: updateadmin
+        description: DreamFactory Update administrator
+        call: dreamfactory.updateadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/admin/{id}
+      name: deleteadmin
+      operations:
+      - method: DELETE
+        name: deleteadmin
+        description: DreamFactory Delete administrator
+        call: dreamfactory.deleteadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app
+      name: listapps
+      operations:
+      - method: GET
+        name: listapps
+        description: DreamFactory List applications
+        call: dreamfactory.listapps
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app
+      name: createapp
+      operations:
+      - method: POST
+        name: createapp
+        description: DreamFactory Create application
+        call: dreamfactory.createapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app/{id}
+      name: getapp
+      operations:
+      - method: GET
+        name: getapp
+        description: DreamFactory Get application
+        call: dreamfactory.getapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app/{id}
+      name: updateapp
+      operations:
+      - method: PATCH
+        name: updateapp
+        description: DreamFactory Update application
+        call: dreamfactory.updateapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app/{id}
+      name: deleteapp
+      operations:
+      - method: DELETE
+        name: deleteapp
+        description: DreamFactory Delete application
+        call: dreamfactory.deleteapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app_group
+      name: listappgroups
+      operations:
+      - method: GET
+        name: listappgroups
+        description: DreamFactory List application groups
+        call: dreamfactory.listappgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/app_group
+      name: createappgroup
+      operations:
+      - method: POST
+        name: createappgroup
+        description: DreamFactory Create application group
+        call: dreamfactory.createappgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/cors
+      name: listcorsconfigs
+      operations:
+      - method: GET
+        name: listcorsconfigs
+        description: DreamFactory List CORS configurations
+        call: dreamfactory.listcorsconfigs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/cors
+      name: createcorsconfig
+      operations:
+      - method: POST
+        name: createcorsconfig
+        description: DreamFactory Create CORS configuration
+        call: dreamfactory.createcorsconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/cors/{id}
+      name: getcorsconfig
+      operations:
+      - method: GET
+        name: getcorsconfig
+        description: DreamFactory Get CORS configuration
+        call: dreamfactory.getcorsconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/cors/{id}
+      name: updatecorsconfig
+      operations:
+      - method: PATCH
+        name: updatecorsconfig
+        description: DreamFactory Update CORS configuration
+        call: dreamfactory.updatecorsconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/cors/{id}
+      name: deletecorsconfig
+      operations:
+      - method: DELETE
+        name: deletecorsconfig
+        description: DreamFactory Delete CORS configuration
+        call: dreamfactory.deletecorsconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/email_template
+      name: listemailtemplates
+      operations:
+      - method: GET
+        name: listemailtemplates
+        description: DreamFactory List email templates
+        call: dreamfactory.listemailtemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/email_template
+      name: createemailtemplate
+      operations:
+      - method: POST
+        name: createemailtemplate
+        description: DreamFactory Create email template
+        call: dreamfactory.createemailtemplate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/environment
+      name: getenvironment
+      operations:
+      - method: GET
+        name: getenvironment
+        description: DreamFactory Get environment information
+        call: dreamfactory.getenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/event
+      name: listevents
+      operations:
+      - method: GET
+        name: listevents
+        description: DreamFactory List events
+        call: dreamfactory.listevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit
+      name: listlimits
+      operations:
+      - method: GET
+        name: listlimits
+        description: DreamFactory List API limits
+        call: dreamfactory.listlimits
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit
+      name: createlimit
+      operations:
+      - method: POST
+        name: createlimit
+        description: DreamFactory Create API limit
+        call: dreamfactory.createlimit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit/{id}
+      name: getlimit
+      operations:
+      - method: GET
+        name: getlimit
+        description: DreamFactory Get API limit
+        call: dreamfactory.getlimit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit/{id}
+      name: updatelimit
+      operations:
+      - method: PATCH
+        name: updatelimit
+        description: DreamFactory Update API limit
+        call: dreamfactory.updatelimit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit/{id}
+      name: deletelimit
+      operations:
+      - method: DELETE
+        name: deletelimit
+        description: DreamFactory Delete API limit
+        call: dreamfactory.deletelimit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit_cache
+      name: listlimitcache
+      operations:
+      - method: GET
+        name: listlimitcache
+        description: DreamFactory List limit cache
+        call: dreamfactory.listlimitcache
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/limit_cache
+      name: resetlimitcache
+      operations:
+      - method: DELETE
+        name: resetlimitcache
+        description: DreamFactory Reset limit counters
+        call: dreamfactory.resetlimitcache
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/lookup
+      name: listlookups
+      operations:
+      - method: GET
+        name: listlookups
+        description: DreamFactory List lookups
+        call: dreamfactory.listlookups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/lookup
+      name: createlookup
+      operations:
+      - method: POST
+        name: createlookup
+        description: DreamFactory Create lookup
+        call: dreamfactory.createlookup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/role
+      name: listroles
+      operations:
+      - method: GET
+        name: listroles
+        description: DreamFactory List roles
+        call: dreamfactory.listroles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/role
+      name: createrole
+      operations:
+      - method: POST
+        name: createrole
+        description: DreamFactory Create role
+        call: dreamfactory.createrole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/role/{id}
+      name: getrole
+      operations:
+      - method: GET
+        name: getrole
+        description: DreamFactory Get role
+        call: dreamfactory.getrole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/role/{id}
+      name: updaterole
+      operations:
+      - method: PATCH
+        name: updaterole
+        description: DreamFactory Update role
+        call: dreamfactory.updaterole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/role/{id}
+      name: deleterole
+      operations:
+      - method: DELETE
+        name: deleterole
+        description: DreamFactory Delete role
+        call: dreamfactory.deleterole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service
+      name: listservices
+      operations:
+      - method: GET
+        name: listservices
+        description: DreamFactory List services
+        call: dreamfactory.listservices
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service
+      name: createservice
+      operations:
+      - method: POST
+        name: createservice
+        description: DreamFactory Create service
+        call: dreamfactory.createservice
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service/{id}
+      name: getservice
+      operations:
+      - method: GET
+        name: getservice
+        description: DreamFactory Get service
+        call: dreamfactory.getservice
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service/{id}
+      name: updateservice
+      operations:
+      - method: PATCH
+        name: updateservice
+        description: DreamFactory Update service
+        call: dreamfactory.updateservice
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service/{id}
+      name: deleteservice
+      operations:
+      - method: DELETE
+        name: deleteservice
+        description: DreamFactory Delete service
+        call: dreamfactory.deleteservice
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/service_type
+      name: listservicetypes
+      operations:
+      - method: GET
+        name: listservicetypes
+        description: DreamFactory List service types
+        call: dreamfactory.listservicetypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/script_type
+      name: listscripttypes
+      operations:
+      - method: GET
+        name: listscripttypes
+        description: DreamFactory List script types
+        call: dreamfactory.listscripttypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/user
+      name: listusers
+      operations:
+      - method: GET
+        name: listusers
+        description: DreamFactory List users
+        call: dreamfactory.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/user
+      name: createuser
+      operations:
+      - method: POST
+        name: createuser
+        description: DreamFactory Create user
+        call: dreamfactory.createuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/user/{id}
+      name: getuser
+      operations:
+      - method: GET
+        name: getuser
+        description: DreamFactory Get user
+        call: dreamfactory.getuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/user/{id}
+      name: updateuser
+      operations:
+      - method: PATCH
+        name: updateuser
+        description: DreamFactory Update user
+        call: dreamfactory.updateuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/user/{id}
+      name: deleteuser
+      operations:
+      - method: DELETE
+        name: deleteuser
+        description: DreamFactory Delete user
+        call: dreamfactory.deleteuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/custom
+      name: listcustomsettings
+      operations:
+      - method: GET
+        name: listcustomsettings
+        description: DreamFactory List custom settings
+        call: dreamfactory.listcustomsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/custom
+      name: setcustomsettings
+      operations:
+      - method: POST
+        name: setcustomsettings
+        description: DreamFactory Set custom settings
+        call: dreamfactory.setcustomsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/package
+      name: listpackages
+      operations:
+      - method: GET
+        name: listpackages
+        description: DreamFactory List packages
+        call: dreamfactory.listpackages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /system/package
+      name: importpackage
+      operations:
+      - method: POST
+        name: importpackage
+        description: DreamFactory Import package
+        call: dreamfactory.importpackage
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: dreamfactory-mcp
+    transport: http
+    description: MCP adapter for DreamFactory System API for AI agent use.
+    tools:
+    - name: listadmins
+      description: DreamFactory List administrators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listadmins
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createadmin
+      description: DreamFactory Create administrator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createadmin
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getadmin
+      description: DreamFactory Get administrator
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getadmin
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateadmin
+      description: DreamFactory Update administrator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updateadmin
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteadmin
+      description: DreamFactory Delete administrator
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deleteadmin
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapps
+      description: DreamFactory List applications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listapps
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapp
+      description: DreamFactory Create application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapp
+      description: DreamFactory Get application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapp
+      description: DreamFactory Update application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updateapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapp
+      description: DreamFactory Delete application
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deleteapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listappgroups
+      description: DreamFactory List application groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listappgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createappgroup
+      description: DreamFactory Create application group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createappgroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcorsconfigs
+      description: DreamFactory List CORS configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listcorsconfigs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcorsconfig
+      description: DreamFactory Create CORS configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createcorsconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcorsconfig
+      description: DreamFactory Get CORS configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getcorsconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecorsconfig
+      description: DreamFactory Update CORS configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updatecorsconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecorsconfig
+      description: DreamFactory Delete CORS configuration
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deletecorsconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listemailtemplates
+      description: DreamFactory List email templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listemailtemplates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createemailtemplate
+      description: DreamFactory Create email template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createemailtemplate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getenvironment
+      description: DreamFactory Get environment information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getenvironment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listevents
+      description: DreamFactory List events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listevents
+      with:
+        as_list: tools.as_list
+      inputParameters:
+      - name: as_list
+        type: boolean
+        description: Return events as a simple list.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listlimits
+      description: DreamFactory List API limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listlimits
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlimit
+      description: DreamFactory Create API limit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createlimit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlimit
+      description: DreamFactory Get API limit
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getlimit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelimit
+      description: DreamFactory Update API limit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updatelimit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletelimit
+      description: DreamFactory Delete API limit
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deletelimit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listlimitcache
+      description: DreamFactory List limit cache
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listlimitcache
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resetlimitcache
+      description: DreamFactory Reset limit counters
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.resetlimitcache
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listlookups
+      description: DreamFactory List lookups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listlookups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlookup
+      description: DreamFactory Create lookup
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createlookup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listroles
+      description: DreamFactory List roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listroles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createrole
+      description: DreamFactory Create role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createrole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getrole
+      description: DreamFactory Get role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getrole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updaterole
+      description: DreamFactory Update role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updaterole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleterole
+      description: DreamFactory Delete role
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deleterole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listservices
+      description: DreamFactory List services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listservices
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createservice
+      description: DreamFactory Create service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createservice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getservice
+      description: DreamFactory Get service
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getservice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateservice
+      description: DreamFactory Update service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updateservice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteservice
+      description: DreamFactory Delete service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deleteservice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listservicetypes
+      description: DreamFactory List service types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listservicetypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listscripttypes
+      description: DreamFactory List script types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listscripttypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listusers
+      description: DreamFactory List users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createuser
+      description: DreamFactory Create user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.createuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuser
+      description: DreamFactory Get user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.getuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateuser
+      description: DreamFactory Update user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.updateuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteuser
+      description: DreamFactory Delete user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: dreamfactory.deleteuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcustomsettings
+      description: DreamFactory List custom settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listcustomsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: setcustomsettings
+      description: DreamFactory Set custom settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.setcustomsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpackages
+      description: DreamFactory List packages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: dreamfactory.listpackages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: importpackage
+      description: DreamFactory Import package
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: dreamfactory.importpackage
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    DREAMFACTORY_TOKEN: DREAMFACTORY_TOKEN
