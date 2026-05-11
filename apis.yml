@@ -179,6 +179,27 @@ position: Consumer
 description: >-
   Automate the building, securing, and documenting of REST APIs for data products
   with built-in enterprise security on bare-metal, VMs, or containers.
+integrations:
+  - name: MS SQL Server
+  - name: Snowflake
+  - name: MySQL
+  - name: SAP HANA (On-Premise)
+  - name: Oracle
+  - name: IBM DB2
+  - name: MongoDB
+  - name: Azure Document DB
+  - name: Azure Cosmos DB
+  - name: CouchDB
+  - name: Amazon DynamoDB
+  - name: Apache Cassandra
+  - name: S3
+  - name: Azureblob
+  - name: FTP/SFTP
+  - name: Local Storage
+  - name: GridFS
+  - name: Rackspace Cloud Files
+  - name: SOAP to REST
+  - name: Salesforce
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
