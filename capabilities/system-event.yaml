@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: DreamFactory System API — Event
+  description: 'DreamFactory System API — Event. 1 operations. Lead operation: DreamFactory List events. Self-contained Naftiko
+    capability covering one Dreamfactory business surface.'
+  tags:
+  - Dreamfactory
+  - Event
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DREAMFACTORY_API_KEY: DREAMFACTORY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: system-event
+    baseUri: https://{instance}/api/v2
+    description: DreamFactory System API — Event business capability. Self-contained, no shared references.
+    resources:
+    - name: system-event
+      path: /system/event
+      operations:
+      - name: listevents
+        method: GET
+        description: DreamFactory List events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: as_list
+          in: query
+          type: boolean
+          description: Return events as a simple list.
+    authentication:
+      type: apikey
+      key: X-DreamFactory-Session-Token
+      value: '{{env.DREAMFACTORY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: system-event-rest
+    port: 8080
+    description: REST adapter for DreamFactory System API — Event. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/system/event
+      name: system-event
+      description: REST surface for system-event.
+      operations:
+      - method: GET
+        name: listevents
+        description: DreamFactory List events
+        call: system-event.listevents
+        with:
+          as_list: rest.as_list
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: system-event-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for DreamFactory System API — Event. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: dreamfactory-list-events
+      description: DreamFactory List events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: system-event.listevents
+      with:
+        as_list: tools.as_list
+      outputParameters:
+      - type: object
+        mapping: $.

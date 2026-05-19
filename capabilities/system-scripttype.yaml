@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: DreamFactory System API — ScriptType
+  description: 'DreamFactory System API — ScriptType. 1 operations. Lead operation: DreamFactory List script types. Self-contained
+    Naftiko capability covering one Dreamfactory business surface.'
+  tags:
+  - Dreamfactory
+  - ScriptType
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DREAMFACTORY_API_KEY: DREAMFACTORY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: system-scripttype
+    baseUri: https://{instance}/api/v2
+    description: DreamFactory System API — ScriptType business capability. Self-contained, no shared references.
+    resources:
+    - name: system-script_type
+      path: /system/script_type
+      operations:
+      - name: listscripttypes
+        method: GET
+        description: DreamFactory List script types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-DreamFactory-Session-Token
+      value: '{{env.DREAMFACTORY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: system-scripttype-rest
+    port: 8080
+    description: REST adapter for DreamFactory System API — ScriptType. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/system/script-type
+      name: system-script-type
+      description: REST surface for system-script_type.
+      operations:
+      - method: GET
+        name: listscripttypes
+        description: DreamFactory List script types
+        call: system-scripttype.listscripttypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: system-scripttype-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for DreamFactory System API — ScriptType. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: dreamfactory-list-script-types
+      description: DreamFactory List script types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: system-scripttype.listscripttypes
+      outputParameters:
+      - type: object
+        mapping: $.

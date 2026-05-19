@@ -1,0 +1,199 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: DreamFactory System API — Admin
+  description: 'DreamFactory System API — Admin. 5 operations. Lead operation: DreamFactory List administrators. Self-contained
+    Naftiko capability covering one Dreamfactory business surface.'
+  tags:
+  - Dreamfactory
+  - Admin
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DREAMFACTORY_API_KEY: DREAMFACTORY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: system-admin
+    baseUri: https://{instance}/api/v2
+    description: DreamFactory System API — Admin business capability. Self-contained, no shared references.
+    resources:
+    - name: system-admin
+      path: /system/admin
+      operations:
+      - name: listadmins
+        method: GET
+        description: DreamFactory List administrators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createadmin
+        method: POST
+        description: DreamFactory Create administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: system-admin-id
+      path: /system/admin/{id}
+      operations:
+      - name: getadmin
+        method: GET
+        description: DreamFactory Get administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateadmin
+        method: PATCH
+        description: DreamFactory Update administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteadmin
+        method: DELETE
+        description: DreamFactory Delete administrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-DreamFactory-Session-Token
+      value: '{{env.DREAMFACTORY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: system-admin-rest
+    port: 8080
+    description: REST adapter for DreamFactory System API — Admin. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/system/admin
+      name: system-admin
+      description: REST surface for system-admin.
+      operations:
+      - method: GET
+        name: listadmins
+        description: DreamFactory List administrators
+        call: system-admin.listadmins
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createadmin
+        description: DreamFactory Create administrator
+        call: system-admin.createadmin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/system/admin/{id}
+      name: system-admin-id
+      description: REST surface for system-admin-id.
+      operations:
+      - method: GET
+        name: getadmin
+        description: DreamFactory Get administrator
+        call: system-admin.getadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateadmin
+        description: DreamFactory Update administrator
+        call: system-admin.updateadmin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteadmin
+        description: DreamFactory Delete administrator
+        call: system-admin.deleteadmin
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: system-admin-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for DreamFactory System API — Admin. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: dreamfactory-list-administrators
+      description: DreamFactory List administrators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: system-admin.listadmins
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dreamfactory-create-administrator
+      description: DreamFactory Create administrator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: system-admin.createadmin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dreamfactory-get-administrator
+      description: DreamFactory Get administrator
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: system-admin.getadmin
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dreamfactory-update-administrator
+      description: DreamFactory Update administrator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: system-admin.updateadmin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dreamfactory-delete-administrator
+      description: DreamFactory Delete administrator
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: system-admin.deleteadmin
+      outputParameters:
+      - type: object
+        mapping: $.

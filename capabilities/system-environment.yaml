@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: DreamFactory System API — Environment
+  description: 'DreamFactory System API — Environment. 1 operations. Lead operation: DreamFactory Get environment information.
+    Self-contained Naftiko capability covering one Dreamfactory business surface.'
+  tags:
+  - Dreamfactory
+  - Environment
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DREAMFACTORY_API_KEY: DREAMFACTORY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: system-environment
+    baseUri: https://{instance}/api/v2
+    description: DreamFactory System API — Environment business capability. Self-contained, no shared references.
+    resources:
+    - name: system-environment
+      path: /system/environment
+      operations:
+      - name: getenvironment
+        method: GET
+        description: DreamFactory Get environment information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-DreamFactory-Session-Token
+      value: '{{env.DREAMFACTORY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: system-environment-rest
+    port: 8080
+    description: REST adapter for DreamFactory System API — Environment. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/system/environment
+      name: system-environment
+      description: REST surface for system-environment.
+      operations:
+      - method: GET
+        name: getenvironment
+        description: DreamFactory Get environment information
+        call: system-environment.getenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: system-environment-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for DreamFactory System API — Environment. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: dreamfactory-get-environment-information
+      description: DreamFactory Get environment information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: system-environment.getenvironment
+      outputParameters:
+      - type: object
+        mapping: $.
