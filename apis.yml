@@ -194,6 +194,8 @@ common:
   - name: Mobile and Web App Development
   - name: Restful API Access
   - name: Secure Data Exchange
+- type: LLMsTxt
+  url: https://docs.dreamfactory.com/llms.txt
 created: '2025-06-05'
 modified: '2026-05-19'
 position: Consumer
