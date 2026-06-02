@@ -2,13 +2,20 @@
   "repo": "dreamfactory",
   "feeds": [
     {
-      "source": "https://blog.dreamfactory.com/",
+      "source": "https://blog.dreamfactory.com/atom.xml",
       "feed_url": "https://blog.dreamfactory.com/atom.xml",
-      "title": "Blog",
+      "title": "",
       "saved": 0,
-      "last_error": "http_404"
+      "method": "feed"
+    },
+    {
+      "source": "https://blog.dreamfactory.com/",
+      "feed_url": "https://blog.dreamfactory.com/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 14,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 24,
+  "fetched": "2026-06-01T23:35:02Z"
 }
