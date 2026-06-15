@@ -1,0 +1,1353 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DreamFactory System API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-DreamFactory-Session-Token",
+      "value": "{{X-DreamFactory-Session-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List administrators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/admin",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like order containing field and direction."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of system administrators."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create administrator",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/admin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more system administrators."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get administrator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/admin/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific administrator by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update administrator",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/admin/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific administrator by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete administrator",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/admin/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific administrator by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "App",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/app",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like order containing field and direction."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of registered applications and their API keys."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/app",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application registration."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/app/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific application by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/app/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific application by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/app/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific application by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AppGroup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List application groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/app_group",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of application groups."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create application group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/app_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CORS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List CORS configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/cors",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of CORS configurations."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create CORS configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/cors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new CORS configuration."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get CORS configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/cors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific CORS configuration by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update CORS configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/cors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific CORS configuration by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete CORS configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/cors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific CORS configuration by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "EmailTemplate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List email templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/email_template",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of email templates."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create email template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/email_template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email template."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory Get environment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/environment"
+          },
+          "docs": "Retrieve environment information including platform details, authentication options, and server configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/event",
+            "params": [
+              {
+                "name": "as_list",
+                "value": "",
+                "type": "query",
+                "description": "Return events as a simple list."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available system events."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Limit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List API limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/limit",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of API rate limits."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create API limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/limit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API rate limit."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get API limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/limit/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific API limit by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update API limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/limit/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific API limit by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete API limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/limit/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific API limit by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory List limit cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/limit_cache"
+          },
+          "docs": "Retrieve current limit volume levels to check how close limits are to being reached."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Reset limit counters",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/limit_cache"
+          },
+          "docs": "Reset limit counters manually."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List lookups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/lookup",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of system lookup keys."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new system lookup key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/role",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like order containing field and direction."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of roles."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/role",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new role for access control."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific role by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific role by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/role/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific role by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/service",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like order containing field and direction."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of configured services."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/service",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new service configuration (e.g., database, file storage, email)."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/service/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific service by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/service/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific service by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/service/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific service by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ServiceType",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List service types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/service_type",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of supported service types and their associated configuration schemas."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ScriptType",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List script types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/script_type"
+          },
+          "docs": "Retrieve a list of supported and configured script types available on the instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/user",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like order containing field and direction."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of registered users."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more users."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "related",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of related resources to include."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific user by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}/api/v2/system/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific user by ID."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}/api/v2/system/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific user by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/custom"
+          },
+          "docs": "Retrieve a list of custom system settings."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Set custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/custom",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update custom system settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Package",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/package"
+          },
+          "docs": "Retrieve a list of available packages for import/export."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Import package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/package",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import a DreamFactory package file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
