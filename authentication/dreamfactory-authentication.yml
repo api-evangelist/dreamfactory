@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/dreamfactory-system-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: sessionToken
+  type: apiKey
+  in: header
+  parameter: X-DreamFactory-Session-Token
+  description: Session token obtained after admin login.
+  sources:
+  - openapi/dreamfactory-system-api-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-DreamFactory-API-Key
+  description: API key associated with a registered application.
+  sources:
+  - openapi/dreamfactory-system-api-openapi.yml

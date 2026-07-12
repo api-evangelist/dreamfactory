@@ -54,6 +54,10 @@ type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: DomainSecurity
+    url: security/dreamfactory-domain-security.yml
+  - type: Authentication
+    url: authentication/dreamfactory-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/dreamfactory-software
   - url: https://github.com/dreamfactorysoftware
