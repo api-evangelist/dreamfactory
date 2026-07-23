@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: DreamFactory System Admin Custom API
+  description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).
+  version: 2.0.0
+  contact:
+    name: DreamFactory Support
+    url: https://www.dreamfactory.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.dreamfactory.com/terms-of-use
+servers:
+- url: https://{instance}/api/v2
+  description: DreamFactory instance
+  variables:
+    instance:
+      default: example.dreamfactory.com
+      description: Your DreamFactory instance hostname
+security:
+- sessionToken: []
+- apiKey: []
+tags:
+- name: Custom
+  description: Custom settings management
+paths:
+  /system/custom:
+    get:
+      operationId: listCustomSettings
+      summary: DreamFactory List custom settings
+      description: Retrieve a list of custom system settings.
+      tags:
+      - Custom
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: setCustomSettings
+      summary: DreamFactory Set custom settings
+      description: Create or update custom system settings.
+      tags:
+      - Custom
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Settings updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    ResourceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            type: object
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      name: X-DreamFactory-Session-Token
+      in: header
+      description: Session token obtained after admin login.
+    apiKey:
+      type: apiKey
+      name: X-DreamFactory-API-Key
+      in: header
+      description: API key associated with a registered application.
+externalDocs:
+  description: DreamFactory Documentation
+  url: https://guide.dreamfactory.com/docs/

@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: DreamFactory System Admin EmailTemplate API
+  description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).
+  version: 2.0.0
+  contact:
+    name: DreamFactory Support
+    url: https://www.dreamfactory.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.dreamfactory.com/terms-of-use
+servers:
+- url: https://{instance}/api/v2
+  description: DreamFactory instance
+  variables:
+    instance:
+      default: example.dreamfactory.com
+      description: Your DreamFactory instance hostname
+security:
+- sessionToken: []
+- apiKey: []
+tags:
+- name: EmailTemplate
+  description: Email template management
+paths:
+  /system/email_template:
+    get:
+      operationId: listEmailTemplates
+      summary: DreamFactory List email templates
+      description: Retrieve a list of email templates.
+      tags:
+      - EmailTemplate
+      parameters:
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: createEmailTemplate
+      summary: DreamFactory Create email template
+      description: Create a new email template.
+      tags:
+      - EmailTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '201':
+          description: Email template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  schemas:
+    ResourceResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    ResourceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            type: object
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+    EmailTemplateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Template name.
+        description:
+          type: string
+          description: Template description.
+        to:
+          type: string
+          description: Default recipient email addresses.
+        cc:
+          type: string
+          description: Default CC email addresses.
+        bcc:
+          type: string
+          description: Default BCC email addresses.
+        subject:
+          type: string
+          description: Email subject template.
+        body_text:
+          type: string
+          description: Plain text body template.
+        body_html:
+          type: string
+          description: HTML body template.
+        from_name:
+          type: string
+          description: Sender display name.
+        from_email:
+          type: string
+          format: email
+          description: Sender email address.
+        reply_to_name:
+          type: string
+          description: Reply-to display name.
+        reply_to_email:
+          type: string
+          format: email
+          description: Reply-to email address.
+      required:
+      - name
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      name: X-DreamFactory-Session-Token
+      in: header
+      description: Session token obtained after admin login.
+    apiKey:
+      type: apiKey
+      name: X-DreamFactory-API-Key
+      in: header
+      description: API key associated with a registered application.
+externalDocs:
+  description: DreamFactory Documentation
+  url: https://guide.dreamfactory.com/docs/

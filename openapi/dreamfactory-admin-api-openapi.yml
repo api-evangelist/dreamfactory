@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: DreamFactory Admin System API
+  title: DreamFactory System Admin API
   description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).
   version: 2.0.0
   contact:
@@ -21,15 +21,16 @@ security:
 - sessionToken: []
 - apiKey: []
 tags:
-- name: System
+- name: Admin
+  description: System administrator management
 paths:
-  /system/service:
+  /system/admin:
     get:
-      operationId: listServices
-      summary: DreamFactory List services
-      description: Retrieve a list of configured services.
+      operationId: listAdmins
+      summary: DreamFactory List administrators
+      description: Retrieve a list of system administrators.
       tags:
-      - System
+      - Admin
       parameters:
       - $ref: '#/components/parameters/fields'
       - $ref: '#/components/parameters/filter'
@@ -43,43 +44,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceListResponse'
+                $ref: '#/components/schemas/AdminListResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalError'
     post:
-      operationId: createService
-      summary: DreamFactory Create service
-      description: Create a new service configuration (e.g., database, file storage, email).
+      operationId: createAdmin
+      summary: DreamFactory Create administrator
+      description: Create one or more system administrators.
       tags:
-      - System
+      - Admin
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ServiceRequest'
+              $ref: '#/components/schemas/AdminRequest'
       responses:
         '201':
-          description: Service created
+          description: Admin created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceResponse'
+                $ref: '#/components/schemas/AdminResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalError'
-  /system/service/{id}:
+  /system/admin/{id}:
     get:
-      operationId: getService
-      summary: DreamFactory Get service
-      description: Retrieve a specific service by ID.
+      operationId: getAdmin
+      summary: DreamFactory Get administrator
+      description: Retrieve a specific administrator by ID.
       tags:
-      - System
+      - Admin
       parameters:
       - $ref: '#/components/parameters/id'
       - $ref: '#/components/parameters/fields'
@@ -90,7 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceResponse'
+                $ref: '#/components/schemas/AdminResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -98,11 +99,11 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
     patch:
-      operationId: updateService
-      summary: DreamFactory Update service
-      description: Update a specific service by ID.
+      operationId: updateAdmin
+      summary: DreamFactory Update administrator
+      description: Update a specific administrator by ID.
       tags:
-      - System
+      - Admin
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -110,14 +111,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ServiceRequest'
+              $ref: '#/components/schemas/AdminRequest'
       responses:
         '200':
-          description: Service updated
+          description: Admin updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceResponse'
+                $ref: '#/components/schemas/AdminResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -127,16 +128,16 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
     delete:
-      operationId: deleteService
-      summary: DreamFactory Delete service
-      description: Delete a specific service by ID.
+      operationId: deleteAdmin
+      summary: DreamFactory Delete administrator
+      description: Delete a specific administrator by ID.
       tags:
-      - System
+      - Admin
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
-          description: Service deleted
+          description: Admin deleted
           content:
             application/json:
               schema:
@@ -156,6 +157,12 @@ components:
       description: Resource identifier.
       schema:
         type: integer
+    related:
+      name: related
+      in: query
+      description: Comma-delimited list of related resources to include.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -163,12 +170,6 @@ components:
       schema:
         type: integer
         default: 0
-    related:
-      name: related
-      in: query
-      description: Comma-delimited list of related resources to include.
-      schema:
-        type: string
     filter:
       name: filter
       in: query
@@ -194,81 +195,6 @@ components:
       schema:
         type: integer
         default: 0
-  schemas:
-    ServiceResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-        is_active:
-          type: boolean
-        config:
-          type: object
-        created_date:
-          type: string
-          format: date-time
-        last_modified_date:
-          type: string
-          format: date-time
-    ServiceRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Unique name for the service (used in API paths).
-        label:
-          type: string
-          description: Display label for the service.
-        description:
-          type: string
-          description: Description of the service.
-        type:
-          type: string
-          description: Service type name.
-        is_active:
-          type: boolean
-          description: Whether the service is active.
-        config:
-          type: object
-          description: Service configuration object. Schema depends on the service type.
-      required:
-      - name
-      - type
-    ServiceListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceResponse'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -294,6 +220,81 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    AdminListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminResponse'
+    AdminRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the administrator.
+        first_name:
+          type: string
+          description: First name.
+        last_name:
+          type: string
+          description: Last name.
+        email:
+          type: string
+          format: email
+          description: Email address (used for login).
+        password:
+          type: string
+          description: Password for the administrator.
+        is_active:
+          type: boolean
+          description: Whether the admin account is active.
+      required:
+      - email
+      - name
+    AdminResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        is_active:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
   securitySchemes:
     sessionToken:
       type: apiKey
