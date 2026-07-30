@@ -1,48 +1,198 @@
 aid: dreamfactory
 url: https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/apis.yml
 apis:
-  - aid: dreamfactory:system-api
-    name: DreamFactory System API
-    tags:
-      - Administration
-      - Automation
-      - Deployment
-      - Documentation
-      - Generation
-      - Security
-    humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
-    baseURL: https://{instance}/api/v2/system
-    properties:
-      - url: https://guide.dreamfactory.com/docs/using-the-system-apis/
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/openapi/dreamfactory-system-api-openapi.yml
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/asyncapi/dreamfactory-system-api-asyncapi.yml
-        type: AsyncAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-admin.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-app.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-role.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-service.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-user.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-ld/dreamfactory-context.jsonld
-        type: JSONLD
-    description: >-
-      The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows
-      managing services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, rate
-      limits, events, scripts, and more via REST endpoints under /api/v2/system/.
+- aid: dreamfactory:system-api
+  name: DreamFactory System API
+  tags:
+  - Administration
+  - Automation
+  - Deployment
+  - Documentation
+  - Generation
+  - Security
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  properties:
+  - url: https://guide.dreamfactory.com/docs/using-the-system-apis/
+    type: Documentation
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/openapi/dreamfactory-system-api-openapi.yml
+    type: OpenAPI
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/asyncapi/dreamfactory-system-api-asyncapi.yml
+    type: AsyncAPI
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-admin.json
+    type: JSONSchema
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-app.json
+    type: JSONSchema
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-role.json
+    type: JSONSchema
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-service.json
+    type: JSONSchema
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-user.json
+    type: JSONSchema
+  - url: >-
+      https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-ld/dreamfactory-context.jsonld
+    type: JSONLD
+  description: >-
+    The DreamFactory System API provides administrative management capabilities for DreamFactory instances.
+    It allows managing services, apps, roles, users, CORS configurations, email templates, environment
+    settings, lookups, rate limits, events, scripts, and more via REST endpoints under /api/v2/system/.
+- aid: dreamfactory:dreamfactory-admin-api
+  name: DreamFactory Admin API
+  description: System administrator management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-admin-api-openapi.yml
+- aid: dreamfactory:dreamfactory-app-api
+  name: DreamFactory App API
+  description: Application and API key management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - App
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-app-api-openapi.yml
+- aid: dreamfactory:dreamfactory-appgroup-api
+  name: DreamFactory AppGroup API
+  description: Application group management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - AppGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-appgroup-api-openapi.yml
+- aid: dreamfactory:dreamfactory-cors-api
+  name: DreamFactory CORS API
+  description: Cross-Origin Resource Sharing configuration
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - CORS
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-cors-api-openapi.yml
+- aid: dreamfactory:dreamfactory-custom-api
+  name: DreamFactory Custom API
+  description: Custom settings management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Custom
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-custom-api-openapi.yml
+- aid: dreamfactory:dreamfactory-emailtemplate-api
+  name: DreamFactory EmailTemplate API
+  description: Email template management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - EmailTemplate
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-emailtemplate-api-openapi.yml
+- aid: dreamfactory:dreamfactory-environment-api
+  name: DreamFactory Environment API
+  description: Environment information
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Environment
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-environment-api-openapi.yml
+- aid: dreamfactory:dreamfactory-event-api
+  name: DreamFactory Event API
+  description: Event management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Event
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-event-api-openapi.yml
+- aid: dreamfactory:dreamfactory-limit-api
+  name: DreamFactory Limit API
+  description: API rate limiting management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Limit
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-limit-api-openapi.yml
+- aid: dreamfactory:dreamfactory-lookup-api
+  name: DreamFactory Lookup API
+  description: Lookup key management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-lookup-api-openapi.yml
+- aid: dreamfactory:dreamfactory-package-api
+  name: DreamFactory Package API
+  description: Package import and export
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Package
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-package-api-openapi.yml
+- aid: dreamfactory:dreamfactory-role-api
+  name: DreamFactory Role API
+  description: Role-based access control management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Role
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-role-api-openapi.yml
+- aid: dreamfactory:dreamfactory-scripttype-api
+  name: DreamFactory ScriptType API
+  description: Script type discovery
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - ScriptType
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-scripttype-api-openapi.yml
+- aid: dreamfactory:dreamfactory-servicetype-api
+  name: DreamFactory ServiceType API
+  description: Service type discovery
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - ServiceType
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-servicetype-api-openapi.yml
+- aid: dreamfactory:dreamfactory-user-api
+  name: DreamFactory User API
+  description: User management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-user-api-openapi.yml
 name: DreamFactory
 tags:
   - Automation
@@ -51,7 +201,20 @@ tags:
   - Generation
   - Security
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dreamfactory.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
