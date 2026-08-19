@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "DreamFactory Admin System API",
+    "name": "DreamFactory System Admin CORS API",
     "version": "2.0.0"
   },
   "request": {
@@ -15,18 +15,18 @@
   "items": [
     {
       "info": {
-        "name": "System",
+        "name": "CORS",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "DreamFactory List services",
+            "name": "DreamFactory List CORS configurations",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://{instance}/api/v2/system/service",
+            "url": "https://{instance}/api/v2/system/cors",
             "params": [
               {
                 "name": "fields",
@@ -51,77 +51,53 @@
                 "value": "",
                 "type": "query",
                 "description": "Number of records to skip for pagination."
-              },
-              {
-                "name": "order",
-                "value": "",
-                "type": "query",
-                "description": "SQL-like order containing field and direction."
-              },
-              {
-                "name": "related",
-                "value": "",
-                "type": "query",
-                "description": "Comma-delimited list of related resources to include."
               }
             ]
           },
-          "docs": "Retrieve a list of configured services."
+          "docs": "Retrieve a list of CORS configurations."
         },
         {
           "info": {
-            "name": "DreamFactory Create service",
+            "name": "DreamFactory Create CORS configuration",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{instance}/api/v2/system/service",
+            "url": "https://{instance}/api/v2/system/cors",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Create a new service configuration (e.g., database, file storage, email)."
+          "docs": "Create a new CORS configuration."
         },
         {
           "info": {
-            "name": "DreamFactory Get service",
+            "name": "DreamFactory Get CORS configuration",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/cors/:id",
             "params": [
               {
                 "name": "id",
                 "value": "",
                 "type": "path",
                 "description": "Resource identifier."
-              },
-              {
-                "name": "fields",
-                "value": "",
-                "type": "query",
-                "description": "Comma-delimited list of fields to return."
-              },
-              {
-                "name": "related",
-                "value": "",
-                "type": "query",
-                "description": "Comma-delimited list of related resources to include."
               }
             ]
           },
-          "docs": "Retrieve a specific service by ID."
+          "docs": "Retrieve a specific CORS configuration by ID."
         },
         {
           "info": {
-            "name": "DreamFactory Update service",
+            "name": "DreamFactory Update CORS configuration",
             "type": "http"
           },
           "http": {
             "method": "PATCH",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/cors/:id",
             "params": [
               {
                 "name": "id",
@@ -135,16 +111,16 @@
               "data": "{}"
             }
           },
-          "docs": "Update a specific service by ID."
+          "docs": "Update a specific CORS configuration by ID."
         },
         {
           "info": {
-            "name": "DreamFactory Delete service",
+            "name": "DreamFactory Delete CORS configuration",
             "type": "http"
           },
           "http": {
             "method": "DELETE",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/cors/:id",
             "params": [
               {
                 "name": "id",
@@ -154,7 +130,7 @@
               }
             ]
           },
-          "docs": "Delete a specific service by ID."
+          "docs": "Delete a specific CORS configuration by ID."
         }
       ]
     }

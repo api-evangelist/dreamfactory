@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DreamFactory System Admin Environment API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-DreamFactory-Session-Token",
+      "value": "{{X-DreamFactory-Session-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory Get environment information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/environment"
+          },
+          "docs": "Retrieve environment information including platform details, authentication options, and server configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

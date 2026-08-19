@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DreamFactory System Admin Custom API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-DreamFactory-Session-Token",
+      "value": "{{X-DreamFactory-Session-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/custom"
+          },
+          "docs": "Retrieve a list of custom system settings."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Set custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/custom",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update custom system settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

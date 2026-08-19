@@ -1,0 +1,622 @@
+{
+  "item": [
+    {
+      "id": "5474ab18-59b8-48cc-9f65-741dc73edb11",
+      "name": "EmailTemplate",
+      "description": {
+        "content": "Email template management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f275f7f9-2319-4a03-b5da-f01b6fa4ab0b",
+          "name": "DreamFactory List email templates",
+          "request": {
+            "name": "DreamFactory List email templates",
+            "description": {
+              "content": "Retrieve a list of email templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system",
+                "email_template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "SQL-like filter to limit results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "0",
+                  "description": "Maximum number of records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your DreamFactory instance hostname",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21d11bfe-2b6f-4fb1-bd11-9a75230fc835",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af548304-b6f8-44a5-abc2-ee0c395441b3",
+              "name": "Unauthorized - invalid or missing session token or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1567,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0228d21f-4c1d-4022-b6f8-547aad24e63c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "0"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1567,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76ebf1b5-02e8-4ad4-9c06-6c7083fe7a61",
+          "name": "DreamFactory Create email template",
+          "request": {
+            "name": "DreamFactory Create email template",
+            "description": {
+              "content": "Create a new email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system",
+                "email_template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your DreamFactory instance hostname",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"to\": \"<string>\",\n  \"cc\": \"<string>\",\n  \"bcc\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body_text\": \"<string>\",\n  \"body_html\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"from_email\": \"<email>\",\n  \"reply_to_name\": \"<string>\",\n  \"reply_to_email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "900185be-2a93-4eff-b9d1-9e645ff4a18f",
+              "name": "Email template created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"to\": \"<string>\",\n  \"cc\": \"<string>\",\n  \"bcc\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body_text\": \"<string>\",\n  \"body_html\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"from_email\": \"<email>\",\n  \"reply_to_name\": \"<string>\",\n  \"reply_to_email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5263\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca7cd47c-26fc-441e-b646-4da3c71eb1de",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"to\": \"<string>\",\n  \"cc\": \"<string>\",\n  \"bcc\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body_text\": \"<string>\",\n  \"body_html\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"from_email\": \"<email>\",\n  \"reply_to_name\": \"<string>\",\n  \"reply_to_email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1567,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26dd8a9a-f946-40b5-88b1-fc9883c9072f",
+              "name": "Unauthorized - invalid or missing session token or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"to\": \"<string>\",\n  \"cc\": \"<string>\",\n  \"bcc\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body_text\": \"<string>\",\n  \"body_html\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"from_email\": \"<email>\",\n  \"reply_to_name\": \"<string>\",\n  \"reply_to_email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1567,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cadd1789-d461-42ac-91c4-5864ed846ed3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "email_template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"to\": \"<string>\",\n  \"cc\": \"<string>\",\n  \"bcc\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body_text\": \"<string>\",\n  \"body_html\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"from_email\": \"<email>\",\n  \"reply_to_name\": \"<string>\",\n  \"reply_to_email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1567,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your DreamFactory instance hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.dreamfactory.com",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-DreamFactory-Session-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9fb5a0c5-a344-452c-a60a-4bfd08fa7a27",
+    "name": "DreamFactory System Admin EmailTemplate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).\n\nContact Support:\n Name: DreamFactory Support",
+      "type": "text/plain"
+    }
+  }
+}

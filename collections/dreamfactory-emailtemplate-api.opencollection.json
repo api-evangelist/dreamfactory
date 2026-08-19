@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DreamFactory System Admin EmailTemplate API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-DreamFactory-Session-Token",
+      "value": "{{X-DreamFactory-Session-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "EmailTemplate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List email templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/email_template",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of email templates."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create email template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/email_template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

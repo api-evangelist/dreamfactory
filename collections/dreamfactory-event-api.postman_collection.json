@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "bcd2dfba-e5d8-4a80-80f6-b33cd1f57f77",
+      "name": "Event",
+      "description": {
+        "content": "Event management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e8f6984-57a8-4f1f-a6ef-55aba21af9e4",
+          "name": "DreamFactory List events",
+          "request": {
+            "name": "DreamFactory List events",
+            "description": {
+              "content": "Retrieve a list of available system events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system",
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "as_list",
+                  "value": "<boolean>",
+                  "description": "Return events as a simple list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your DreamFactory instance hostname",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57c987ff-9a99-476e-aaa1-696c803f5dc2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "as_list",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fa10bce-ef6c-401e-9c1d-5865bc4fcdf8",
+              "name": "Unauthorized - invalid or missing session token or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "as_list",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5540,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164fbd47-5eda-41ad-ac3d-b47e073a66a7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "as_list",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your DreamFactory instance hostname",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-DreamFactory-Session-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5540,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your DreamFactory instance hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.dreamfactory.com",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-DreamFactory-Session-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e8e7fdd-4675-413e-bf5f-b320ba642154",
+    "name": "DreamFactory System Admin Event API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).\n\nContact Support:\n Name: DreamFactory Support",
+      "type": "text/plain"
+    }
+  }
+}

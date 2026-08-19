@@ -1,26 +1,26 @@
 {
   "item": [
     {
-      "id": "72a893db-9d74-4c44-aeab-d08f0889c664",
-      "name": "System",
+      "id": "005e022b-7ed2-4de3-869b-1bc65f77fe16",
+      "name": "Role",
       "description": {
-        "content": "",
+        "content": "Role-based access control management",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "e135bafc-1a66-4ecf-9c6d-de74ef9a1c30",
-          "name": "DreamFactory List services",
+          "id": "c0f9af25-5a4a-4757-bda1-f6163ea50ae2",
+          "name": "DreamFactory List roles",
           "request": {
-            "name": "DreamFactory List services",
+            "name": "DreamFactory List roles",
             "description": {
-              "content": "Retrieve a list of configured services.",
+              "content": "Retrieve a list of roles.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "system",
-                "service"
+                "role"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -83,13 +83,13 @@
           },
           "response": [
             {
-              "id": "6d2a5a7b-9ae6-4462-8b2d-757921d66f6e",
+              "id": "f913e94f-8d47-4151-8a6c-cef537f90ea4",
               "name": "Success",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -154,18 +154,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"resource\": [\n    {\n      \"id\": 5167,\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"is_active\": false,\n      \"config\": {},\n      \"created_date\": \"1960-01-08T18:21:57.908Z\",\n      \"last_modified_date\": \"1978-09-22T16:15:56.014Z\"\n    },\n    {\n      \"id\": 9587,\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"is_active\": true,\n      \"config\": {},\n      \"created_date\": \"1974-08-23T03:05:51.467Z\",\n      \"last_modified_date\": \"2015-01-05T06:05:20.931Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"resource\": [\n    {\n      \"id\": 3918,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"is_active\": true,\n      \"created_date\": \"1981-02-02T10:30:26.043Z\",\n      \"last_modified_date\": \"2002-01-03T03:46:09.469Z\"\n    },\n    {\n      \"id\": 2146,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"is_active\": false,\n      \"created_date\": \"2020-12-21T01:20:26.838Z\",\n      \"last_modified_date\": \"1992-09-10T15:31:52.138Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "97806e56-1fa6-4a06-876b-3fc3d1d50c9a",
+              "id": "85f867b6-b167-43c2-b661-2289fdd0c8ae",
               "name": "Unauthorized - invalid or missing session token or API key",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -230,18 +230,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "25833552-a953-4134-8a62-50fa65bf5a14",
+              "id": "3bd9e0c7-5dcb-4d25-b61b-b7150386fae6",
               "name": "Internal server error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -306,7 +306,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -317,18 +317,18 @@
           }
         },
         {
-          "id": "4a45b32f-fe5e-44e1-b58d-4d91dc86cf12",
-          "name": "DreamFactory Create service",
+          "id": "9b4ab2a6-db7f-4167-a0e5-81c870c418ca",
+          "name": "DreamFactory Create role",
           "request": {
-            "name": "DreamFactory Create service",
+            "name": "DreamFactory Create role",
             "description": {
-              "content": "Create a new service configuration (e.g., database, file storage, email).",
+              "content": "Create a new role for access control.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "system",
-                "service"
+                "role"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -357,7 +357,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -367,13 +367,13 @@
           },
           "response": [
             {
-              "id": "adbb5263-115f-4667-ab53-573acd560f82",
-              "name": "Service created",
+              "id": "ef5c830e-888f-4e8a-97d3-0316148007e2",
+              "name": "Role created",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -405,7 +405,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -421,18 +421,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 160,\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"is_active\": false,\n  \"config\": {},\n  \"created_date\": \"1956-01-23T23:09:06.889Z\",\n  \"last_modified_date\": \"2019-04-04T21:12:59.002Z\"\n}",
+              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "45a47ce4-83c4-4d4d-99a3-6ca57c0f0cd2",
+              "id": "d58f9c34-7329-4d73-9f38-78054a7be36c",
               "name": "Bad request",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -464,7 +464,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -480,18 +480,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "07ecfa82-5a75-408f-8feb-ac7f81a22d5e",
+              "id": "a777308b-e707-47d2-a381-ad468adc9724",
               "name": "Unauthorized - invalid or missing session token or API key",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -523,7 +523,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -539,18 +539,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9634248d-5cb0-4b47-8c71-6310e1cf65d0",
+              "id": "c51d6850-f01d-45b9-af52-1f6ab81e8a27",
               "name": "Internal server error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service"
+                    "role"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -582,7 +582,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -598,7 +598,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -609,18 +609,18 @@
           }
         },
         {
-          "id": "2ce9c221-a22a-400b-ade5-099441ff6dea",
-          "name": "DreamFactory Get service",
+          "id": "6dbb567b-cebd-45dd-bc8e-dba8febb95fe",
+          "name": "DreamFactory Get role",
           "request": {
-            "name": "DreamFactory Get service",
+            "name": "DreamFactory Get role",
             "description": {
-              "content": "Retrieve a specific service by ID.",
+              "content": "Retrieve a specific role by ID.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "system",
-                "service",
+                "role",
                 ":id"
               ],
               "host": [
@@ -667,13 +667,13 @@
           },
           "response": [
             {
-              "id": "00069fd3-ec74-4993-93a3-5aa8025f17e5",
+              "id": "8c63f94f-dc73-4f13-ae2d-63d6aac51d7d",
               "name": "Success",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -730,18 +730,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 160,\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"is_active\": false,\n  \"config\": {},\n  \"created_date\": \"1956-01-23T23:09:06.889Z\",\n  \"last_modified_date\": \"2019-04-04T21:12:59.002Z\"\n}",
+              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5a01069d-ddc8-4753-b0f0-f8e2883aedd8",
+              "id": "5784d792-f5f2-4491-8f40-9466798a88b2",
               "name": "Unauthorized - invalid or missing session token or API key",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -798,18 +798,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "96ed205d-af07-4706-a71e-cbd072aad309",
+              "id": "fa15bb7d-2c22-43ff-ab13-ac84c5fc8781",
               "name": "Resource not found",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -866,18 +866,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "7405c586-8089-49ca-8554-8a8dd985d497",
+              "id": "5d92c17c-4d8d-4920-9d36-d8f3ebddf8fe",
               "name": "Internal server error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -934,7 +934,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -945,18 +945,18 @@
           }
         },
         {
-          "id": "081a59a9-57d7-4f18-857d-8e4987d31204",
-          "name": "DreamFactory Update service",
+          "id": "4b8092ea-2cde-4acd-a72a-ebaf1a2edf87",
+          "name": "DreamFactory Update role",
           "request": {
-            "name": "DreamFactory Update service",
+            "name": "DreamFactory Update role",
             "description": {
-              "content": "Update a specific service by ID.",
+              "content": "Update a specific role by ID.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "system",
-                "service",
+                "role",
                 ":id"
               ],
               "host": [
@@ -993,7 +993,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1003,13 +1003,13 @@
           },
           "response": [
             {
-              "id": "5d0fd3f4-ec26-449c-9c60-f620da59edcb",
-              "name": "Service updated",
+              "id": "54ad9493-2988-4b10-a4b8-643f3c408445",
+              "name": "Role updated",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1049,7 +1049,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1065,18 +1065,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 160,\n  \"name\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"is_active\": false,\n  \"config\": {},\n  \"created_date\": \"1956-01-23T23:09:06.889Z\",\n  \"last_modified_date\": \"2019-04-04T21:12:59.002Z\"\n}",
+              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "09e30d9a-3b10-40fc-a284-d30d92002ad2",
+              "id": "702aba8b-7171-4bc8-b166-17c7ff86f6cb",
               "name": "Bad request",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1116,7 +1116,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1132,18 +1132,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "15503817-7b4c-4e77-a582-168ff219daf7",
+              "id": "0ce1591f-4c5d-4f1e-be60-2a966e400274",
               "name": "Unauthorized - invalid or missing session token or API key",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1183,7 +1183,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1199,18 +1199,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b9da2ad5-b356-480f-b717-d62fff70246c",
+              "id": "5244c248-f266-42bb-b645-b53cae4839b6",
               "name": "Resource not found",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1250,7 +1250,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1266,18 +1266,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a50d5b2e-e7c6-4969-8a6b-d1189f6a4b1c",
+              "id": "bd8f9eec-6112-47b9-8930-31580797a285",
               "name": "Internal server error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1317,7 +1317,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"config\": \"<object>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1333,7 +1333,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -1344,18 +1344,18 @@
           }
         },
         {
-          "id": "234cc9a8-0cc6-48ce-a327-f07fa0e452c6",
-          "name": "DreamFactory Delete service",
+          "id": "f4d7993f-507c-4bf1-aea0-adaeacd5ee3b",
+          "name": "DreamFactory Delete role",
           "request": {
-            "name": "DreamFactory Delete service",
+            "name": "DreamFactory Delete role",
             "description": {
-              "content": "Delete a specific service by ID.",
+              "content": "Delete a specific role by ID.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "system",
-                "service",
+                "role",
                 ":id"
               ],
               "host": [
@@ -1389,13 +1389,13 @@
           },
           "response": [
             {
-              "id": "00710527-8bf0-4846-bdfd-cef2fdfb1cd6",
-              "name": "Service deleted",
+              "id": "086a9246-10c0-436e-8abf-6cb6b1c7e8b6",
+              "name": "Role deleted",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1448,13 +1448,13 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c4f29794-e121-416a-a164-cb423d871e0c",
+              "id": "548a865a-51c2-4b21-8f4c-48ba0bbaa179",
               "name": "Unauthorized - invalid or missing session token or API key",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1502,18 +1502,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "b0d93f4e-c52e-4f06-800b-dd685d91bcd6",
+              "id": "006d01ee-047d-4287-aeac-a0a88455a93e",
               "name": "Resource not found",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1561,18 +1561,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "618b77a0-2cee-4f4b-9992-7e9a5ceffb59",
+              "id": "e0a5a8b4-dbfa-4f1c-a9ec-d8e8e001a1ce",
               "name": "Internal server error",
               "originalRequest": {
                 "url": {
                   "path": [
                     "system",
-                    "service",
+                    "role",
                     ":id"
                   ],
                   "host": [
@@ -1620,7 +1620,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 3684,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
+              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -1669,8 +1669,8 @@
     ]
   },
   "info": {
-    "_postman_id": "b145fbbc-b18d-482b-b306-ed4d24167fa7",
-    "name": "DreamFactory Admin System API",
+    "_postman_id": "8d7b8321-ae0a-4fb2-b24f-1ee40958cd0f",
+    "name": "DreamFactory System Admin Role API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).\n\nContact Support:\n Name: DreamFactory Support",

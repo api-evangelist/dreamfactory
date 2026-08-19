@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DreamFactory System Admin AppGroup API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-DreamFactory-Session-Token",
+      "value": "{{X-DreamFactory-Session-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AppGroup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DreamFactory List application groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/v2/system/app_group",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of fields to return."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like filter to limit results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of application groups."
+        },
+        {
+          "info": {
+            "name": "DreamFactory Create application group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/v2/system/app_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

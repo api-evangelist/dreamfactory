@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "DreamFactory Admin System API",
+    "name": "DreamFactory System Admin API",
     "version": "2.0.0"
   },
   "request": {
@@ -15,18 +15,18 @@
   "items": [
     {
       "info": {
-        "name": "System",
+        "name": "Admin",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "DreamFactory List services",
+            "name": "DreamFactory List administrators",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://{instance}/api/v2/system/service",
+            "url": "https://{instance}/api/v2/system/admin",
             "params": [
               {
                 "name": "fields",
@@ -66,31 +66,31 @@
               }
             ]
           },
-          "docs": "Retrieve a list of configured services."
+          "docs": "Retrieve a list of system administrators."
         },
         {
           "info": {
-            "name": "DreamFactory Create service",
+            "name": "DreamFactory Create administrator",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{instance}/api/v2/system/service",
+            "url": "https://{instance}/api/v2/system/admin",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Create a new service configuration (e.g., database, file storage, email)."
+          "docs": "Create one or more system administrators."
         },
         {
           "info": {
-            "name": "DreamFactory Get service",
+            "name": "DreamFactory Get administrator",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/admin/:id",
             "params": [
               {
                 "name": "id",
@@ -112,16 +112,16 @@
               }
             ]
           },
-          "docs": "Retrieve a specific service by ID."
+          "docs": "Retrieve a specific administrator by ID."
         },
         {
           "info": {
-            "name": "DreamFactory Update service",
+            "name": "DreamFactory Update administrator",
             "type": "http"
           },
           "http": {
             "method": "PATCH",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/admin/:id",
             "params": [
               {
                 "name": "id",
@@ -135,16 +135,16 @@
               "data": "{}"
             }
           },
-          "docs": "Update a specific service by ID."
+          "docs": "Update a specific administrator by ID."
         },
         {
           "info": {
-            "name": "DreamFactory Delete service",
+            "name": "DreamFactory Delete administrator",
             "type": "http"
           },
           "http": {
             "method": "DELETE",
-            "url": "https://{instance}/api/v2/system/service/:id",
+            "url": "https://{instance}/api/v2/system/admin/:id",
             "params": [
               {
                 "name": "id",
@@ -154,7 +154,7 @@
               }
             ]
           },
-          "docs": "Delete a specific service by ID."
+          "docs": "Delete a specific administrator by ID."
         }
       ]
     }
