@@ -69,7 +69,7 @@ apis:
   humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
   baseURL: https://{instance}/api/v2/system
   tags:
-  - App Group
+  - AppGroup
   tags_raw:
   - AppGroup
   properties:
