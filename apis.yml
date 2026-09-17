@@ -63,18 +63,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dreamfactory-app-api-openapi.yml
-- aid: dreamfactory:dreamfactory-appgroup-api
-  name: DreamFactory AppGroup API
-  description: Application group management
-  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
-  baseURL: https://{instance}/api/v2/system
-  tags:
-  - App Group
-  tags_raw:
-  - AppGroup
-  properties:
-  - type: OpenAPI
-    url: openapi/dreamfactory-appgroup-api-openapi.yml
 - aid: dreamfactory:dreamfactory-cors-api
   name: DreamFactory CORS API
   description: Cross-Origin Resource Sharing configuration
@@ -95,16 +83,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dreamfactory-custom-api-openapi.yml
-- aid: dreamfactory:dreamfactory-emailtemplate-api
-  name: DreamFactory EmailTemplate API
-  description: Email template management
-  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
-  baseURL: https://{instance}/api/v2/system
-  tags:
-  - EmailTemplate
-  properties:
-  - type: OpenAPI
-    url: openapi/dreamfactory-emailtemplate-api-openapi.yml
 - aid: dreamfactory:dreamfactory-environment-api
   name: DreamFactory Environment API
   description: Environment information
@@ -195,6 +173,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dreamfactory-user-api-openapi.yml
+- aid: dreamfactory:dreamfactory-app-group-api
+  name: DreamFactory App Group API
+  description: Application group management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - App Group
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-app-group-api-openapi.yml
+- aid: dreamfactory:dreamfactory-email-template-api
+  name: DreamFactory Email Template API
+  description: Email template management
+  humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
+  baseURL: https://{instance}/api/v2/system
+  tags:
+  - Email Template
+  properties:
+  - type: OpenAPI
+    url: openapi/dreamfactory-email-template-api-openapi.yml
 name: DreamFactory
 tags:
   - Automation
