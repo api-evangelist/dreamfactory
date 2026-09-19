@@ -189,6 +189,8 @@ apis:
   humanURL: https://guide.dreamfactory.com/docs/using-the-system-apis/
   baseURL: https://{instance}/api/v2/system
   tags:
+  - EmailTemplate
+  tags_raw:
   - Email Template
   properties:
   - type: OpenAPI
