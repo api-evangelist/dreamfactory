@@ -3,10 +3,10 @@
   "sources": [
     "dreamfactory-admin-api-openapi.yml",
     "dreamfactory-app-api-openapi.yml",
-    "dreamfactory-appgroup-api-openapi.yml",
+    "dreamfactory-app-group-api-openapi.yml",
     "dreamfactory-cors-api-openapi.yml",
     "dreamfactory-custom-api-openapi.yml",
-    "dreamfactory-emailtemplate-api-openapi.yml",
+    "dreamfactory-email-template-api-openapi.yml",
     "dreamfactory-environment-api-openapi.yml",
     "dreamfactory-event-api-openapi.yml",
     "dreamfactory-limit-api-openapi.yml",
@@ -21,10 +21,10 @@
   "outputs": [
     "dreamfactory-admin-api-openapi.yml",
     "dreamfactory-app-api-openapi.yml",
-    "dreamfactory-appgroup-api-openapi.yml",
+    "dreamfactory-app-group-api-openapi.yml",
     "dreamfactory-cors-api-openapi.yml",
     "dreamfactory-custom-api-openapi.yml",
-    "dreamfactory-emailtemplate-api-openapi.yml",
+    "dreamfactory-email-template-api-openapi.yml",
     "dreamfactory-environment-api-openapi.yml",
     "dreamfactory-event-api-openapi.yml",
     "dreamfactory-limit-api-openapi.yml",
@@ -38,7 +38,11 @@
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
+  "warnings": [
+    "no openapi/_original/ archive: this run re-split PREVIOUSLY REFINED output, so any base URL it carries is inherited from an earlier pass rather than read from a document the provider published"
+  ],
+  "notes": [
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

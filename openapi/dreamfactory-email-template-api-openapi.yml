@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: DreamFactory System Admin AppGroup API
-  description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).
+  title: DreamFactory System Admin Email Template API
+  description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances.
   version: 2.0.0
   contact:
     name: DreamFactory Support
@@ -21,16 +21,16 @@ security:
 - sessionToken: []
 - apiKey: []
 tags:
-- name: AppGroup
-  description: Application group management
+- name: Email Template
+  description: Email template management
 paths:
-  /system/app_group:
+  /system/email_template:
     get:
-      operationId: listAppGroups
-      summary: DreamFactory List application groups
-      description: Retrieve a list of application groups.
+      operationId: listEmailTemplates
+      summary: DreamFactory List email templates
+      description: Retrieve a list of email templates.
       tags:
-      - AppGroup
+      - Email Template
       parameters:
       - $ref: '#/components/parameters/fields'
       - $ref: '#/components/parameters/filter'
@@ -48,20 +48,20 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
     post:
-      operationId: createAppGroup
-      summary: DreamFactory Create application group
-      description: Create a new application group.
+      operationId: createEmailTemplate
+      summary: DreamFactory Create email template
+      description: Create a new email template.
       tags:
-      - AppGroup
+      - Email Template
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppGroupRequest'
+              $ref: '#/components/schemas/EmailTemplateRequest'
       responses:
         '201':
-          description: App group created
+          description: Email template created
           content:
             application/json:
               schema:
@@ -73,12 +73,96 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ResourceResponse:
+    EmailTemplateRequest:
       type: object
       properties:
-        id:
-          type: integer
+        name:
+          type: string
+          description: Template name.
+        description:
+          type: string
+          description: Template description.
+        to:
+          type: string
+          description: Default recipient email addresses.
+        cc:
+          type: string
+          description: Default CC email addresses.
+        bcc:
+          type: string
+          description: Default BCC email addresses.
+        subject:
+          type: string
+          description: Email subject template.
+        body_text:
+          type: string
+          description: Plain text body template.
+        body_html:
+          type: string
+          description: HTML body template.
+        from_name:
+          type: string
+          description: Sender display name.
+        from_email:
+          type: string
+          format: email
+          description: Sender email address.
+        reply_to_name:
+          type: string
+          description: Reply-to display name.
+        reply_to_email:
+          type: string
+          format: email
+          description: Reply-to email address.
+      required:
+      - name
     ResourceListResponse:
       type: object
       properties:
@@ -101,63 +185,11 @@ components:
             context:
               type: object
               description: Additional error context.
-    AppGroupRequest:
+    ResourceResponse:
       type: object
       properties:
-        name:
-          type: string
-          description: Name of the application group.
-        description:
-          type: string
-          description: Description of the group.
-      required:
-      - name
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-  responses:
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        id:
+          type: integer
   securitySchemes:
     sessionToken:
       type: apiKey

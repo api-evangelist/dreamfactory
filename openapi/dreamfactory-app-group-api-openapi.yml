@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: DreamFactory System Admin Package API
+  title: DreamFactory System Admin App Group API
   description: The DreamFactory System API provides administrative management capabilities for DreamFactory instances.
   version: 2.0.0
   contact:
@@ -21,16 +21,21 @@ security:
 - sessionToken: []
 - apiKey: []
 tags:
-- name: Package
-  description: Package import and export
+- name: App Group
+  description: Application group management
 paths:
-  /system/package:
+  /system/app_group:
     get:
-      operationId: listPackages
-      summary: DreamFactory List packages
-      description: Retrieve a list of available packages for import/export.
+      operationId: listAppGroups
+      summary: DreamFactory List application groups
+      description: Retrieve a list of application groups.
       tags:
-      - Package
+      - App Group
+      parameters:
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Success
@@ -43,28 +48,24 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
     post:
-      operationId: importPackage
-      summary: DreamFactory Import package
-      description: Import a DreamFactory package file.
+      operationId: createAppGroup
+      summary: DreamFactory Create application group
+      description: Create a new application group.
       tags:
-      - Package
+      - App Group
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                import_url:
-                  type: string
-                  description: URL to import the package from.
+              $ref: '#/components/schemas/AppGroupRequest'
       responses:
-        '200':
-          description: Package imported
+        '201':
+          description: App group created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SuccessResponse'
+                $ref: '#/components/schemas/ResourceResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -72,6 +73,33 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   responses:
     BadRequest:
       description: Bad request
@@ -99,11 +127,6 @@ components:
           type: array
           items:
             type: object
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     ErrorResponse:
       type: object
       properties:
@@ -119,6 +142,22 @@ components:
             context:
               type: object
               description: Additional error context.
+    ResourceResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    AppGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the application group.
+        description:
+          type: string
+          description: Description of the group.
+      required:
+      - name
   securitySchemes:
     sessionToken:
       type: apiKey
