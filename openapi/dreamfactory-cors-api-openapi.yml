@@ -145,7 +145,46 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     limit:
       name: limit
       in: query
@@ -165,52 +204,7 @@ components:
       description: Comma-delimited list of fields to return.
       schema:
         type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: integer
   schemas:
-    CorsListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/CorsResponse'
-    CorsRequest:
-      type: object
-      properties:
-        path:
-          type: string
-          description: API path to apply CORS to.
-        origin:
-          type: string
-          description: Allowed origin.
-        header:
-          type: string
-          description: Allowed headers.
-        method:
-          type: integer
-          description: Bitmask of allowed HTTP methods.
-        max_age:
-          type: integer
-          description: Max age for preflight caching in seconds.
-        enabled:
-          type: boolean
-          description: Whether CORS config is enabled.
-      required:
-      - path
-      - origin
     CorsResponse:
       type: object
       properties:
@@ -239,6 +233,13 @@ components:
       properties:
         success:
           type: boolean
+    CorsListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorsResponse'
     ErrorResponse:
       type: object
       properties:
@@ -254,31 +255,30 @@ components:
             context:
               type: object
               description: Additional error context.
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    CorsRequest:
+      type: object
+      properties:
+        path:
+          type: string
+          description: API path to apply CORS to.
+        origin:
+          type: string
+          description: Allowed origin.
+        header:
+          type: string
+          description: Allowed headers.
+        method:
+          type: integer
+          description: Bitmask of allowed HTTP methods.
+        max_age:
+          type: integer
+          description: Max age for preflight caching in seconds.
+        enabled:
+          type: boolean
+          description: Whether CORS config is enabled.
+      required:
+      - path
+      - origin
   securitySchemes:
     sessionToken:
       type: apiKey

@@ -149,83 +149,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
-    order:
-      name: order
-      in: query
-      description: SQL-like order containing field and direction.
-      schema:
-        type: string
-    related:
-      name: related
-      in: query
-      description: Comma-delimited list of related resources to include.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: integer
   schemas:
-    AdminRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Display name of the administrator.
-        first_name:
-          type: string
-          description: First name.
-        last_name:
-          type: string
-          description: Last name.
-        email:
-          type: string
-          format: email
-          description: Email address (used for login).
-        password:
-          type: string
-          description: Password for the administrator.
-        is_active:
-          type: boolean
-          description: Whether the admin account is active.
-      required:
-      - email
-      - name
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     AdminResponse:
       type: object
       properties:
@@ -255,6 +179,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AdminResponse'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    AdminRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the administrator.
+        first_name:
+          type: string
+          description: First name.
+        last_name:
+          type: string
+          description: Last name.
+        email:
+          type: string
+          format: email
+          description: Email address (used for login).
+        password:
+          type: string
+          description: Password for the administrator.
+        is_active:
+          type: boolean
+          description: Whether the admin account is active.
+      required:
+      - email
+      - name
     ErrorResponse:
       type: object
       properties:
@@ -271,6 +225,12 @@ components:
               type: object
               description: Additional error context.
   responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request
       content:
@@ -289,12 +249,52 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    related:
+      name: related
+      in: query
+      description: Comma-delimited list of related resources to include.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    order:
+      name: order
+      in: query
+      description: SQL-like order containing field and direction.
+      schema:
+        type: string
   securitySchemes:
     sessionToken:
       type: apiKey

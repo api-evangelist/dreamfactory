@@ -1,5 +1,8 @@
 aid: dreamfactory
 url: https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/apis.yml
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-25
 apis:
 - aid: dreamfactory:system-api
   name: DreamFactory System API
@@ -247,7 +250,7 @@ common:
     name: DreamFactory | Code Automation for Generating REST APIs
     type: Website
     description: 'null'
-  - url: https://docs.dreamfactory.com/?_gl=1*yrriox*_gcl_au*MTgxMzQyMDU4OC4xNzQ5MTM5NjA0
+  - url: https://docs.dreamfactory.com/
     name: DreamFactory Docs | DreamFactory Docs
     type: Documentation
     description: 'null'

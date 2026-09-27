@@ -74,23 +74,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    LookupRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Lookup key name.
-        value:
-          type: string
-          description: Lookup value.
-        private:
-          type: boolean
-          description: Whether the lookup is private (hidden from clients).
-        description:
-          type: string
-          description: Description of the lookup.
-      required:
-      - name
     LookupResponse:
       type: object
       properties:
@@ -110,6 +93,23 @@ components:
         last_modified_date:
           type: string
           format: date-time
+    LookupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Lookup key name.
+        value:
+          type: string
+          description: Lookup value.
+        private:
+          type: boolean
+          description: Whether the lookup is private (hidden from clients).
+        description:
+          type: string
+          description: Description of the lookup.
+      required:
+      - name
     ErrorResponse:
       type: object
       properties:
@@ -132,34 +132,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LookupResponse'
-  parameters:
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request
       content:
@@ -172,12 +151,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
   securitySchemes:
     sessionToken:
       type: apiKey

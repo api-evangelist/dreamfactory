@@ -149,7 +149,46 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
     limit:
       name: limit
       in: query
@@ -157,10 +196,10 @@ components:
       schema:
         type: integer
         default: 0
-    fields:
-      name: fields
+    related:
+      name: related
       in: query
-      description: Comma-delimited list of fields to return.
+      description: Comma-delimited list of related resources to include.
       schema:
         type: string
     filter:
@@ -169,10 +208,10 @@ components:
       description: SQL-like filter to limit results.
       schema:
         type: string
-    related:
-      name: related
+    fields:
+      name: fields
       in: query
-      description: Comma-delimited list of related resources to include.
+      description: Comma-delimited list of fields to return.
       schema:
         type: string
     order:
@@ -181,20 +220,6 @@ components:
       description: SQL-like order containing field and direction.
       schema:
         type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: integer
   schemas:
     UserResponse:
       type: object
@@ -220,18 +245,6 @@ components:
         last_modified_date:
           type: string
           format: date-time
-    UserListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     UserRequest:
       type: object
       properties:
@@ -260,6 +273,18 @@ components:
       required:
       - email
       - name
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    UserListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
     ErrorResponse:
       type: object
       properties:
@@ -275,31 +300,6 @@ components:
             context:
               type: object
               description: Additional error context.
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     sessionToken:
       type: apiKey

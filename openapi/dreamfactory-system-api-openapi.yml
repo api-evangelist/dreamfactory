@@ -148,53 +148,13 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
-    order:
-      name: order
-      in: query
-      description: SQL-like order containing field and direction.
-      schema:
-        type: string
-    related:
-      name: related
-      in: query
-      description: Comma-delimited list of related resources to include.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: integer
   responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request
       content:
@@ -213,13 +173,60 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    related:
+      name: related
+      in: query
+      description: Comma-delimited list of related resources to include.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    order:
+      name: order
+      in: query
+      description: SQL-like order containing field and direction.
+      schema:
+        type: string
   schemas:
+    ServiceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceResponse'
     ServiceResponse:
       type: object
       properties:
@@ -243,6 +250,26 @@ components:
         last_modified_date:
           type: string
           format: date-time
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
     ServiceRequest:
       type: object
       properties:
@@ -267,33 +294,6 @@ components:
       required:
       - name
       - type
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
-    ServiceListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceResponse'
   securitySchemes:
     sessionToken:
       type: apiKey
