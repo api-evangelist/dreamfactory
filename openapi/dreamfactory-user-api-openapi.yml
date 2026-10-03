@@ -149,31 +149,6 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     id:
       name: id
@@ -182,13 +157,12 @@ components:
       description: Resource identifier.
       schema:
         type: integer
-    offset:
-      name: offset
+    related:
+      name: related
       in: query
-      description: Number of records to skip for pagination.
+      description: Comma-delimited list of related resources to include.
       schema:
-        type: integer
-        default: 0
+        type: string
     limit:
       name: limit
       in: query
@@ -196,12 +170,6 @@ components:
       schema:
         type: integer
         default: 0
-    related:
-      name: related
-      in: query
-      description: Comma-delimited list of related resources to include.
-      schema:
-        type: string
     filter:
       name: filter
       in: query
@@ -220,7 +188,59 @@ components:
       description: SQL-like order containing field and direction.
       schema:
         type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
     UserResponse:
       type: object
       properties:
@@ -245,6 +265,13 @@ components:
         last_modified_date:
           type: string
           format: date-time
+    UserListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
     UserRequest:
       type: object
       properties:
@@ -273,33 +300,6 @@ components:
       required:
       - email
       - name
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    UserListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
   securitySchemes:
     sessionToken:
       type: apiKey

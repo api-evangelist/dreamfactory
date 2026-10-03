@@ -74,14 +74,14 @@ components:
               type: object
               description: Additional error context.
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
+    InternalError:
+      description: Internal server error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
       content:
         application/json:
           schema:
