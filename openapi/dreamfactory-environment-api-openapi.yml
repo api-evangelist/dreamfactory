@@ -44,20 +44,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
-    EnvironmentResponse:
-      type: object
-      properties:
-        platform:
-          type: object
-          properties:
-            version:
-              type: string
-            is_hosted:
-              type: boolean
-        authentication:
-          type: object
-        server:
-          type: object
     ErrorResponse:
       type: object
       properties:
@@ -73,15 +59,29 @@ components:
             context:
               type: object
               description: Additional error context.
+    EnvironmentResponse:
+      type: object
+      properties:
+        platform:
+          type: object
+          properties:
+            version:
+              type: string
+            is_hosted:
+              type: boolean
+        authentication:
+          type: object
+        server:
+          type: object
   responses:
-    InternalError:
-      description: Internal server error
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
+    InternalError:
+      description: Internal server error
       content:
         application/json:
           schema:

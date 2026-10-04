@@ -181,6 +181,19 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   parameters:
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
     id:
       name: id
       in: path
@@ -188,10 +201,10 @@ components:
       description: Resource identifier.
       schema:
         type: integer
-    limit:
-      name: limit
+    offset:
+      name: offset
       in: query
-      description: Maximum number of records to return.
+      description: Number of records to skip for pagination.
       schema:
         type: integer
         default: 0
@@ -201,108 +214,7 @@ components:
       description: SQL-like filter to limit results.
       schema:
         type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    LimitResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-        rate:
-          type: integer
-        period:
-          type: string
-        service_id:
-          type: integer
-        role_id:
-          type: integer
-        user_id:
-          type: integer
-        is_active:
-          type: boolean
-        created_date:
-          type: string
-          format: date-time
-        last_modified_date:
-          type: string
-          format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
-    ResourceListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            type: object
-    LimitListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/LimitResponse'
     LimitRequest:
       type: object
       properties:
@@ -338,6 +250,94 @@ components:
       - type
       - rate
       - period
+    LimitListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/LimitResponse'
+    LimitResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        rate:
+          type: integer
+        period:
+          type: string
+        service_id:
+          type: integer
+        role_id:
+          type: integer
+        user_id:
+          type: integer
+        is_active:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+    ResourceListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            type: object
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     sessionToken:
       type: apiKey

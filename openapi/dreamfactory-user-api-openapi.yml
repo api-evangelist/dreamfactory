@@ -150,6 +150,19 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   parameters:
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
     id:
       name: id
       in: path
@@ -163,31 +176,6 @@ components:
       description: Comma-delimited list of related resources to include.
       schema:
         type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    order:
-      name: order
-      in: query
-      description: SQL-like order containing field and direction.
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -195,83 +183,19 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    order:
+      name: order
+      in: query
+      description: SQL-like order containing field and direction.
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
-    UserResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-          format: email
-        is_active:
-          type: boolean
-        phone:
-          type: string
-        created_date:
-          type: string
-          format: date-time
-        last_modified_date:
-          type: string
-          format: date-time
-    UserListResponse:
-      type: object
-      properties:
-        resource:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
     UserRequest:
       type: object
       properties:
@@ -300,6 +224,82 @@ components:
       required:
       - email
       - name
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        is_active:
+          type: boolean
+        phone:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    UserListResponse:
+      type: object
+      properties:
+        resource:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     sessionToken:
       type: apiKey
