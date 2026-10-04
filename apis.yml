@@ -235,6 +235,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dreamfactory.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/dreamfactory-capability-edges.yml
+    name: DreamFactory Business Capability Map
   - type: AgenticAccess
     url: agentic-access/dreamfactory-agentic-access.yml
   - type: DomainSecurity
