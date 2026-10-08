@@ -235,6 +235,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dreamfactory.png
 access: 3rd-Party
 common:
+  - type: Plans
+    url: plans/dreamfactory-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/dreamfactory-rate-limits.yml
+  - type: FinOps
+    url: finops/dreamfactory-finops.yml
   - type: CapabilityMap
     url: capabilities/dreamfactory-capability-edges.yml
     name: DreamFactory Business Capability Map
