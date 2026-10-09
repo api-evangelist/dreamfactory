@@ -1,0 +1,34 @@
+# Front Door AI Index — dreamfactory — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: dreamfactory
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: www.dreamfactory.com
+  final_host: www.dreamfactory.com
+  ownership: own
+  owner: dreamfactory
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 65
+  band: 6
+  band_label: dominant
+  host_score: 65
+  density: 35.54
+  words: 1829
+  tiers:
+    agentic: 12
+    core: 51
+    model: 2
+  ambiguous: 10
+  top_terms:
+    AI: 47
+    agent: 10
+    AI agent: 6
+    MCP: 5
+    LLMs: 4
+    ChatGPT: 2
+    RAG: 1
