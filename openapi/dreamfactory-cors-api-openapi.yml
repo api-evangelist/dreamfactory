@@ -145,41 +145,22 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Comma-delimited list of fields to return.
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 0
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: integer
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    filter:
-      name: filter
-      in: query
-      description: SQL-like filter to limit results.
-      schema:
-        type: string
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            context:
+              type: object
+              description: Additional error context.
     CorsListResponse:
       type: object
       properties:
@@ -187,34 +168,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CorsResponse'
-    CorsResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        path:
-          type: string
-        origin:
-          type: string
-        header:
-          type: string
-        method:
-          type: integer
-        max_age:
-          type: integer
-        enabled:
-          type: boolean
-        created_date:
-          type: string
-          format: date-time
-        last_modified_date:
-          type: string
-          format: date-time
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     CorsRequest:
       type: object
       properties:
@@ -239,24 +192,71 @@ components:
       required:
       - path
       - origin
-    ErrorResponse:
+    SuccessResponse:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            context:
-              type: object
-              description: Additional error context.
+        success:
+          type: boolean
+    CorsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        path:
+          type: string
+        origin:
+          type: string
+        header:
+          type: string
+        method:
+          type: integer
+        max_age:
+          type: integer
+        enabled:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        last_modified_date:
+          type: string
+          format: date-time
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: integer
+    filter:
+      name: filter
+      in: query
+      description: SQL-like filter to limit results.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-delimited list of fields to return.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 0
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   responses:
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
       content:
         application/json:
           schema:
@@ -267,8 +267,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

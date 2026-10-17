@@ -66,25 +66,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 components:
-  responses:
-    InternalError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or missing session token or API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
     ErrorResponse:
       type: object
       properties:
@@ -107,6 +89,24 @@ components:
           type: array
           items:
             type: object
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing session token or API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     sessionToken:
       type: apiKey
