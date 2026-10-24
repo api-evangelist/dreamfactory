@@ -1,228 +1,193 @@
 {
+  "info": {
+    "_postman_id": "d2d03f97-73ff-4478-8c2d-cf8e27482afe",
+    "name": "DreamFactory System Admin Script Type API",
+    "description": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances.\n\nContact Support:\n Name: DreamFactory Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:54:58.000Z",
+    "updatedAt": "2026-10-21T19:54:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d2d03f97-73ff-4478-8c2d-cf8e27482afe"
+  },
   "item": [
     {
-      "id": "752c5974-2512-4654-ab4c-8394656d2d40",
-      "name": "ScriptType",
-      "description": {
-        "content": "Script type discovery",
-        "type": "text/plain"
-      },
+      "name": "system",
       "item": [
         {
-          "id": "c2bef932-456c-42ef-ab78-539f483c751d",
-          "name": "DreamFactory List script types",
-          "request": {
-            "name": "DreamFactory List script types",
-            "description": {
-              "content": "Retrieve a list of supported and configured script types available on the instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "script_type"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "script_type",
+          "item": [
             {
-              "id": "33a50a48-68b1-42f1-8435-bd45f3e4778a",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "script_type"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
+              "name": "DreamFactory List script types",
+              "id": "eeffcc21-8bec-42bd-acb3-8682adef6080",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f1c23768-3395-4858-b917-5b62b60b77f2",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "system",
-                    "script_type"
-                  ],
+                  "raw": "{{baseUrl}}/system/script_type",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 4006,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a2a5c967-ccaf-4296-9448-60eef52de249",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "system",
                     "script_type"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a list of supported and configured script types available on the instance."
               },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "0e14ed99-eb10-4573-9280-3582f1df3ad1",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/script_type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "script_type"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T19:54:58.000Z",
+                  "updatedAt": "2026-10-21T19:54:58.000Z",
+                  "uid": "35240-0e14ed99-eb10-4573-9280-3582f1df3ad1"
+                },
+                {
+                  "id": "c85110e1-3686-401f-9a31-af0800aff962",
+                  "name": "Unauthorized - invalid or missing session token or API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/script_type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "script_type"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:58.000Z",
+                  "updatedAt": "2026-10-21T19:54:58.000Z",
+                  "uid": "35240-c85110e1-3686-401f-9a31-af0800aff962"
+                },
+                {
+                  "id": "2c5a44fb-b136-4c99-bbc1-fe9430b0fe69",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/script_type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "script_type"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:58.000Z",
+                  "updatedAt": "2026-10-21T19:54:58.000Z",
+                  "uid": "35240-2c5a44fb-b136-4c99-bbc1-fe9430b0fe69"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 4006,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T19:54:58.000Z",
+              "updatedAt": "2026-10-21T19:54:58.000Z",
+              "uid": "35240-eeffcc21-8bec-42bd-acb3-8682adef6080"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "04bf5b89-cea1-4a58-9ca7-cacac0162853",
+          "createdAt": "2026-10-21T19:54:58.000Z",
+          "updatedAt": "2026-10-21T19:54:58.000Z",
+          "uid": "35240-04bf5b89-cea1-4a58-9ca7-cacac0162853"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your DreamFactory instance hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.dreamfactory.com",
-      "key": "instance"
-    },
-    {
-      "type": "string",
-      "value": "https://{{instance}}/api/v2",
-      "key": "baseUrl"
+      "id": "431cd6c3-5faa-4010-8257-8f9b736dfc92",
+      "createdAt": "2026-10-21T19:54:58.000Z",
+      "updatedAt": "2026-10-21T19:54:58.000Z",
+      "uid": "35240-431cd6c3-5faa-4010-8257-8f9b736dfc92"
     }
   ],
   "auth": {
@@ -230,25 +195,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-DreamFactory-Session-Token"
+        "value": "X-DreamFactory-Session-Token",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1b5b8211-8b0f-4223-90d5-3cd98220bc87",
-    "name": "DreamFactory System Admin ScriptType API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).\n\nContact Support:\n Name: DreamFactory Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example.dreamfactory.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}/api/v2"
     }
-  }
+  ]
 }

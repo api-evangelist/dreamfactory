@@ -1,1654 +1,1508 @@
 {
+  "info": {
+    "_postman_id": "cf4f2a63-bdbc-40a4-b3b1-6cf1b9070682",
+    "name": "DreamFactory System Admin Role API",
+    "description": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances.\n\nContact Support:\n Name: DreamFactory Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:54:52.000Z",
+    "updatedAt": "2026-10-21T19:54:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf4f2a63-bdbc-40a4-b3b1-6cf1b9070682"
+  },
   "item": [
     {
-      "id": "005e022b-7ed2-4de3-869b-1bc65f77fe16",
-      "name": "Role",
-      "description": {
-        "content": "Role-based access control management",
-        "type": "text/plain"
-      },
+      "name": "system",
       "item": [
         {
-          "id": "c0f9af25-5a4a-4757-bda1-f6163ea50ae2",
-          "name": "DreamFactory List roles",
-          "request": {
-            "name": "DreamFactory List roles",
-            "description": {
-              "content": "Retrieve a list of roles.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "role"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-delimited list of fields to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "filter",
-                  "value": "<string>",
-                  "description": "SQL-like filter to limit results."
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "0",
-                  "description": "Maximum number of records to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip for pagination."
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "<string>",
-                  "description": "SQL-like order containing field and direction."
-                },
-                {
-                  "disabled": false,
-                  "key": "related",
-                  "value": "<string>",
-                  "description": "Comma-delimited list of related resources to include."
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "role",
+          "item": [
             {
-              "id": "f913e94f-8d47-4151-8a6c-cef537f90ea4",
-              "name": "Success",
-              "originalRequest": {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "DreamFactory Get role",
+                  "id": "68d82d2f-9fc5-46f6-86d1-35457276d709",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role/:id?fields=<string>&related=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-delimited list of related resources to include.",
+                          "key": "related",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "97de5abc-1eb4-47b5-8920-f1df99ceb891",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Resource identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a specific role by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "f8fa7aa5-b340-450d-b128-db093abf4d59",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id?fields=<string>&related=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-delimited list of fields to return.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-delimited list of related resources to include.",
+                              "key": "related",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"created_date\": \"<dateTime>\",\n  \"last_modified_date\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-f8fa7aa5-b340-450d-b128-db093abf4d59"
+                    },
+                    {
+                      "id": "1579231d-8f2e-4802-82fd-517ee5fa669e",
+                      "name": "Unauthorized - invalid or missing session token or API key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id?fields=<string>&related=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-delimited list of fields to return.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-delimited list of related resources to include.",
+                              "key": "related",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-1579231d-8f2e-4802-82fd-517ee5fa669e"
+                    },
+                    {
+                      "id": "8c30d9a6-68f9-4769-b608-97fa6ba156b2",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id?fields=<string>&related=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-delimited list of fields to return.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-delimited list of related resources to include.",
+                              "key": "related",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-8c30d9a6-68f9-4769-b608-97fa6ba156b2"
+                    },
+                    {
+                      "id": "947ff1ae-6290-4cae-8508-075f849643e1",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id?fields=<string>&related=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-delimited list of fields to return.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-delimited list of related resources to include.",
+                              "key": "related",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-947ff1ae-6290-4cae-8508-075f849643e1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-68d82d2f-9fc5-46f6-86d1-35457276d709"
+                },
+                {
+                  "name": "DreamFactory Update role",
+                  "id": "987afce1-2aef-4de0-979b-23e4a6cdbc18",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e8983f3e-a015-4cea-be27-72d4a8ac4e1f",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Resource identifier."
+                        }
+                      ]
+                    },
+                    "description": "Update a specific role by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "2a638db4-784d-41f5-b811-400fbff216d2",
+                      "name": "Role updated",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"created_date\": \"<dateTime>\",\n  \"last_modified_date\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-2a638db4-784d-41f5-b811-400fbff216d2"
+                    },
+                    {
+                      "id": "05349f4c-f122-4cb0-b165-83c3c942f214",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-05349f4c-f122-4cb0-b165-83c3c942f214"
+                    },
+                    {
+                      "id": "3d23d21c-56fc-4e6e-ae42-84b32ade38e6",
+                      "name": "Unauthorized - invalid or missing session token or API key",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-3d23d21c-56fc-4e6e-ae42-84b32ade38e6"
+                    },
+                    {
+                      "id": "63c7febc-4ed1-4e12-ab83-5eae880a896c",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-63c7febc-4ed1-4e12-ab83-5eae880a896c"
+                    },
+                    {
+                      "id": "c6d66bcf-4165-492c-aa68-f586f21d8e6e",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-c6d66bcf-4165-492c-aa68-f586f21d8e6e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-987afce1-2aef-4de0-979b-23e4a6cdbc18"
+                },
+                {
+                  "name": "DreamFactory Delete role",
+                  "id": "db8d698f-483d-4ce0-a4d2-ced5a181ea4d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "14dfaea1-efd3-4df8-be8e-0d590ba7af7b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Resource identifier."
+                        }
+                      ]
+                    },
+                    "description": "Delete a specific role by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "af01a88a-5401-4e99-85e8-35eb0496994e",
+                      "name": "Role deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-af01a88a-5401-4e99-85e8-35eb0496994e"
+                    },
+                    {
+                      "id": "76ba06f3-42b0-4da9-be5f-590b3aa08234",
+                      "name": "Unauthorized - invalid or missing session token or API key",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-76ba06f3-42b0-4da9-be5f-590b3aa08234"
+                    },
+                    {
+                      "id": "87e96c13-122e-4663-b5d5-ef649b9a6381",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-87e96c13-122e-4663-b5d5-ef649b9a6381"
+                    },
+                    {
+                      "id": "0a37feca-5f10-47d2-9b83-3593891da5e2",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-DreamFactory-Session-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/system/role/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "system",
+                            "role",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                      "createdAt": "2026-10-21T19:54:53.000Z",
+                      "updatedAt": "2026-10-21T19:54:53.000Z",
+                      "uid": "35240-0a37feca-5f10-47d2-9b83-3593891da5e2"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-db8d698f-483d-4ce0-a4d2-ced5a181ea4d"
+                }
+              ],
+              "id": "9e9dcb42-92bb-40dd-a21f-2683fc06c54a",
+              "createdAt": "2026-10-21T19:54:53.000Z",
+              "updatedAt": "2026-10-21T19:54:53.000Z",
+              "uid": "35240-9e9dcb42-92bb-40dd-a21f-2683fc06c54a"
+            },
+            {
+              "name": "DreamFactory List roles",
+              "id": "6df92d32-c1fa-4bde-ad22-c43dce4fe1c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/system/role?fields=<string>&filter=<string>&limit=0&offset=0&order=<string>&related=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "system",
                     "role"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Comma-delimited list of fields to return.",
                       "key": "fields",
                       "value": "<string>"
                     },
                     {
+                      "description": "SQL-like filter to limit results.",
                       "key": "filter",
                       "value": "<string>"
                     },
                     {
+                      "description": "Maximum number of records to return.",
                       "key": "limit",
                       "value": "0"
                     },
                     {
+                      "description": "Number of records to skip for pagination.",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "SQL-like order containing field and direction.",
                       "key": "order",
                       "value": "<string>"
                     },
                     {
+                      "description": "Comma-delimited list of related resources to include.",
                       "key": "related",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a list of roles."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "05990923-0615-4635-994d-f614cb241e45",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role?fields=<string>&filter=<string>&limit=0&offset=0&order=<string>&related=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "SQL-like order containing field and direction.",
+                          "key": "order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-delimited list of related resources to include.",
+                          "key": "related",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"resource\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"created_date\": \"<dateTime>\",\n      \"last_modified_date\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"created_date\": \"<dateTime>\",\n      \"last_modified_date\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-05990923-0615-4635-994d-f614cb241e45"
+                },
+                {
+                  "id": "30621ce3-fd2d-44fd-8a48-2d4e8f30bf2c",
+                  "name": "Unauthorized - invalid or missing session token or API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role?fields=<string>&filter=<string>&limit=0&offset=0&order=<string>&related=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "SQL-like order containing field and direction.",
+                          "key": "order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-delimited list of related resources to include.",
+                          "key": "related",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-30621ce3-fd2d-44fd-8a48-2d4e8f30bf2c"
+                },
+                {
+                  "id": "85ebede5-fc04-43b5-a7db-f28b4ca3d4ff",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role?fields=<string>&filter=<string>&limit=0&offset=0&order=<string>&related=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "SQL-like order containing field and direction.",
+                          "key": "order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-delimited list of related resources to include.",
+                          "key": "related",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-85ebede5-fc04-43b5-a7db-f28b4ca3d4ff"
                 }
               ],
-              "body": "{\n  \"resource\": [\n    {\n      \"id\": 3918,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"is_active\": true,\n      \"created_date\": \"1981-02-02T10:30:26.043Z\",\n      \"last_modified_date\": \"2002-01-03T03:46:09.469Z\"\n    },\n    {\n      \"id\": 2146,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"is_active\": false,\n      \"created_date\": \"2020-12-21T01:20:26.838Z\",\n      \"last_modified_date\": \"1992-09-10T15:31:52.138Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T19:54:53.000Z",
+              "updatedAt": "2026-10-21T19:54:53.000Z",
+              "uid": "35240-6df92d32-c1fa-4bde-ad22-c43dce4fe1c7"
             },
             {
-              "id": "85f867b6-b167-43c2-b661-2289fdd0c8ae",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "0"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "order",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+              "name": "DreamFactory Create role",
+              "id": "0bf9569c-0fe2-46b3-922d-422e89267eab",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3bd9e0c7-5dcb-4d25-b61b-b7150386fae6",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "0"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "order",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9b4ab2a6-db7f-4167-a0e5-81c870c418ca",
-          "name": "DreamFactory Create role",
-          "request": {
-            "name": "DreamFactory Create role",
-            "description": {
-              "content": "Create a new role for access control.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "role"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ef5c830e-888f-4e8a-97d3-0316148007e2",
-              "name": "Role created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+              "request": {
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d58f9c34-7329-4d73-9f38-78054a7be36c",
-              "name": "Bad request",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/system/role",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "system",
                     "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Create a new role for access control."
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a777308b-e707-47d2-a381-ad468adc9724",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "b59b70be-56fe-4664-9412-7d7285c19a15",
+                  "name": "Role created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"created_date\": \"<dateTime>\",\n  \"last_modified_date\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-b59b70be-56fe-4664-9412-7d7285c19a15"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c51d6850-f01d-45b9-af52-1f6ab81e8a27",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "4983de32-046d-487d-a9c9-68a73ed1f82b",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-4983de32-046d-487d-a9c9-68a73ed1f82b"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "2c18bd54-117f-47d8-b8dc-98d1225449d8",
+                  "name": "Unauthorized - invalid or missing session token or API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-2c18bd54-117f-47d8-b8dc-98d1225449d8"
+                },
+                {
+                  "id": "c383f7ee-d042-4136-b417-c7a1301d43ae",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/role",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "role"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:54:53.000Z",
+                  "updatedAt": "2026-10-21T19:54:53.000Z",
+                  "uid": "35240-c383f7ee-d042-4136-b417-c7a1301d43ae"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T19:54:53.000Z",
+              "updatedAt": "2026-10-21T19:54:53.000Z",
+              "uid": "35240-0bf9569c-0fe2-46b3-922d-422e89267eab"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6dbb567b-cebd-45dd-bc8e-dba8febb95fe",
-          "name": "DreamFactory Get role",
-          "request": {
-            "name": "DreamFactory Get role",
-            "description": {
-              "content": "Retrieve a specific role by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "role",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-delimited list of fields to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "related",
-                  "value": "<string>",
-                  "description": "Comma-delimited list of related resources to include."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Resource identifier."
-                },
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8c63f94f-dc73-4f13-ae2d-63d6aac51d7d",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5784d792-f5f2-4491-8f40-9466798a88b2",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fa15bb7d-2c22-43ff-ab13-ac84c5fc8781",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5d92c17c-4d8d-4920-9d36-d8f3ebddf8fe",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "related",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4b8092ea-2cde-4acd-a72a-ebaf1a2edf87",
-          "name": "DreamFactory Update role",
-          "request": {
-            "name": "DreamFactory Update role",
-            "description": {
-              "content": "Update a specific role by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "role",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Resource identifier."
-                },
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "54ad9493-2988-4b10-a4b8-643f3c408445",
-              "name": "Role updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 4427,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"is_active\": false,\n  \"created_date\": \"2000-04-06T20:13:57.512Z\",\n  \"last_modified_date\": \"1989-02-24T11:29:09.761Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "702aba8b-7171-4bc8-b166-17c7ff86f6cb",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0ce1591f-4c5d-4f1e-be60-2a966e400274",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5244c248-f266-42bb-b645-b53cae4839b6",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bd8f9eec-6112-47b9-8930-31580797a285",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"role_service_access_by_role_id\": [\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    },\n    {\n      \"service_id\": \"<integer>\",\n      \"component\": \"<string>\",\n      \"verb_mask\": \"<integer>\",\n      \"requestor_mask\": \"<integer>\",\n      \"filters\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"filter_op\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f4d7993f-507c-4bf1-aea0-adaeacd5ee3b",
-          "name": "DreamFactory Delete role",
-          "request": {
-            "name": "DreamFactory Delete role",
-            "description": {
-              "content": "Delete a specific role by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "system",
-                "role",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) Resource identifier."
-                },
-                {
-                  "description": "Your DreamFactory instance hostname",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "086a9246-10c0-436e-8abf-6cb6b1c7e8b6",
-              "name": "Role deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "548a865a-51c2-4b21-8f4c-48ba0bbaa179",
-              "name": "Unauthorized - invalid or missing session token or API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "006d01ee-047d-4287-aeac-a0a88455a93e",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e0a5a8b4-dbfa-4f1c-a9ec-d8e8e001a1ce",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "system",
-                    "role",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) Resource identifier."
-                    },
-                    {
-                      "description": "Your DreamFactory instance hostname",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-DreamFactory-Session-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"code\": 7113,\n    \"message\": \"string\",\n    \"context\": {}\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9238b17f-c60a-4e40-8960-659240624175",
+          "createdAt": "2026-10-21T19:54:53.000Z",
+          "updatedAt": "2026-10-21T19:54:53.000Z",
+          "uid": "35240-9238b17f-c60a-4e40-8960-659240624175"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your DreamFactory instance hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.dreamfactory.com",
-      "key": "instance"
-    },
-    {
-      "type": "string",
-      "value": "https://{{instance}}/api/v2",
-      "key": "baseUrl"
+      "id": "1cbba6e3-1606-4746-94ed-3492dc397840",
+      "createdAt": "2026-10-21T19:54:53.000Z",
+      "updatedAt": "2026-10-21T19:54:53.000Z",
+      "uid": "35240-1cbba6e3-1606-4746-94ed-3492dc397840"
     }
   ],
   "auth": {
@@ -1656,25 +1510,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-DreamFactory-Session-Token"
+        "value": "X-DreamFactory-Session-Token",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8d7b8321-ae0a-4fb2-b24f-1ee40958cd0f",
-    "name": "DreamFactory System Admin Role API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows administrators to manage services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, events, scripts, and more. All system resources are accessible under the /api/v2/system/ base path. Authentication requires either an X-DreamFactory-Session-Token header (for system admins) or an X-DreamFactory-API-Key header (for users with appropriate permissions).\n\nContact Support:\n Name: DreamFactory Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example.dreamfactory.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}/api/v2"
     }
-  }
+  ]
 }

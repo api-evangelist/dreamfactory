@@ -1,0 +1,585 @@
+{
+  "info": {
+    "_postman_id": "5dd41d40-414c-4690-bed5-01f82b02587a",
+    "name": "DreamFactory System Admin App Group API",
+    "description": "The DreamFactory System API provides administrative management capabilities for DreamFactory instances.\n\nContact Support:\n Name: DreamFactory Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:55:17.000Z",
+    "updatedAt": "2026-10-21T19:55:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5dd41d40-414c-4690-bed5-01f82b02587a"
+  },
+  "item": [
+    {
+      "name": "system",
+      "item": [
+        {
+          "name": "app_group",
+          "item": [
+            {
+              "name": "DreamFactory List application groups",
+              "id": "78bd3be7-3340-4bff-b32a-85793e4df032",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/system/app_group?fields=<string>&filter=<string>&limit=0&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "system",
+                    "app_group"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-delimited list of fields to return.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "SQL-like filter to limit results.",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of records to return.",
+                      "key": "limit",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Number of records to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of application groups."
+              },
+              "response": [
+                {
+                  "id": "5ff170f5-3cd0-4334-ad57-b4e7640a6467",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group?fields=<string>&filter=<string>&limit=0&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-5ff170f5-3cd0-4334-ad57-b4e7640a6467"
+                },
+                {
+                  "id": "ebee8fee-21fd-4a62-a104-32164add497d",
+                  "name": "Unauthorized - invalid or missing session token or API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group?fields=<string>&filter=<string>&limit=0&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-ebee8fee-21fd-4a62-a104-32164add497d"
+                },
+                {
+                  "id": "bb5ed2fb-471d-42e6-8d50-539b4b704986",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group?fields=<string>&filter=<string>&limit=0&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-delimited list of fields to return.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SQL-like filter to limit results.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of records to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-bb5ed2fb-471d-42e6-8d50-539b4b704986"
+                }
+              ],
+              "createdAt": "2026-10-21T19:55:18.000Z",
+              "updatedAt": "2026-10-21T19:55:18.000Z",
+              "uid": "35240-78bd3be7-3340-4bff-b32a-85793e4df032"
+            },
+            {
+              "name": "DreamFactory Create application group",
+              "id": "da018bb9-b4b3-4c35-bcf6-03fc629094de",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/system/app_group",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "system",
+                    "app_group"
+                  ]
+                },
+                "description": "Create a new application group."
+              },
+              "response": [
+                {
+                  "id": "abcb2391-ebb2-4d29-ad6c-39e065c3a07b",
+                  "name": "App group created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-abcb2391-ebb2-4d29-ad6c-39e065c3a07b"
+                },
+                {
+                  "id": "4d106aa8-df96-4452-a4b3-eb57566f0860",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-4d106aa8-df96-4452-a4b3-eb57566f0860"
+                },
+                {
+                  "id": "468e476b-b7e2-48fb-8916-74debc0eb432",
+                  "name": "Unauthorized - invalid or missing session token or API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-468e476b-b7e2-48fb-8916-74debc0eb432"
+                },
+                {
+                  "id": "c6a0fa52-2863-459a-8cb9-7fcf87634486",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-DreamFactory-Session-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/system/app_group",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "system",
+                        "app_group"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"context\": {}\n  }\n}",
+                  "createdAt": "2026-10-21T19:55:18.000Z",
+                  "updatedAt": "2026-10-21T19:55:18.000Z",
+                  "uid": "35240-c6a0fa52-2863-459a-8cb9-7fcf87634486"
+                }
+              ],
+              "createdAt": "2026-10-21T19:55:18.000Z",
+              "updatedAt": "2026-10-21T19:55:18.000Z",
+              "uid": "35240-da018bb9-b4b3-4c35-bcf6-03fc629094de"
+            }
+          ],
+          "id": "344394da-ecd3-4f6d-88e2-6f36680317a0",
+          "createdAt": "2026-10-21T19:55:18.000Z",
+          "updatedAt": "2026-10-21T19:55:18.000Z",
+          "uid": "35240-344394da-ecd3-4f6d-88e2-6f36680317a0"
+        }
+      ],
+      "id": "46f727cf-adf7-4e69-a4cd-bfcbb51eae94",
+      "createdAt": "2026-10-21T19:55:18.000Z",
+      "updatedAt": "2026-10-21T19:55:18.000Z",
+      "uid": "35240-46f727cf-adf7-4e69-a4cd-bfcbb51eae94"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-DreamFactory-Session-Token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example.dreamfactory.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}/api/v2"
+    }
+  ]
+}
