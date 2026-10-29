@@ -1,4 +1,4 @@
-# DreamFactory (dreamfactory)
+# DreamFactory
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,79 +66,194 @@
 
 Automate the building, securing, and documenting of REST APIs for data products with built-in enterprise security on bare-metal, VMs, or containers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/apis.yml)
+**Areas:** Automation · Deployment · Documentation · Generation · Security
 
-## Scope
+## DreamFactory on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for DreamFactory is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dreamfactory/](https://apis.io/providers/dreamfactory/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (16)
 
-- Automation
-- Deployment
-- Documentation
-- Generation
-- Security
+- [DreamFactory System API](https://apis.io/apis/dreamfactory/system-api/) — The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows managing services, apps, roles, users,…
+- [DreamFactory Admin API](https://apis.io/apis/dreamfactory/dreamfactory-admin-api/) — System administrator management
+- [DreamFactory App API](https://apis.io/apis/dreamfactory/dreamfactory-app-api/) — Application and API key management
+- [DreamFactory CORS API](https://apis.io/apis/dreamfactory/dreamfactory-cors-api/) — Cross-Origin Resource Sharing configuration
+- [DreamFactory Custom API](https://apis.io/apis/dreamfactory/dreamfactory-custom-api/) — Custom settings management
+- [DreamFactory Environment API](https://apis.io/apis/dreamfactory/dreamfactory-environment-api/) — Environment information
+- [DreamFactory Event API](https://apis.io/apis/dreamfactory/dreamfactory-event-api/) — Event management
+- [DreamFactory Limit API](https://apis.io/apis/dreamfactory/dreamfactory-limit-api/) — API rate limiting management
+- [DreamFactory Lookup API](https://apis.io/apis/dreamfactory/dreamfactory-lookup-api/) — Lookup key management
+- [DreamFactory Package API](https://apis.io/apis/dreamfactory/dreamfactory-package-api/) — Package import and export
+- [DreamFactory Role API](https://apis.io/apis/dreamfactory/dreamfactory-role-api/) — Role-based access control management
+- [DreamFactory ScriptType API](https://apis.io/apis/dreamfactory/dreamfactory-scripttype-api/) — Script type discovery
+- [DreamFactory ServiceType API](https://apis.io/apis/dreamfactory/dreamfactory-servicetype-api/) — Service type discovery
+- [DreamFactory User API](https://apis.io/apis/dreamfactory/dreamfactory-user-api/) — User management
+- [DreamFactory App Group API](https://apis.io/apis/dreamfactory/dreamfactory-app-group-api/) — Application group management
+- [DreamFactory Email Template API](https://apis.io/apis/dreamfactory/dreamfactory-email-template-api/) — Email template management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-05
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### DreamFactory System API
+Event-driven and webhook contracts.
 
-The DreamFactory System API provides administrative management capabilities for DreamFactory instances. It allows managing services, apps, roles, users, CORS configurations, email templates, environment settings, lookups, rate limits, events, scripts, and more via REST endpoints under /api/v2/system/.
+- [DreamFactory System API Events](https://apis.io/asyncapis/dreamfactory/dreamfactory-system-api-asyncapi/)
 
-- **Human URL:** [https://guide.dreamfactory.com/docs/using-the-system-apis/](https://guide.dreamfactory.com/docs/using-the-system-apis/)
-- **Base URL:** `https://{instance}/api/v2/system`
+#### Event channels (10)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Administration
-- Automation
-- Deployment
-- Documentation
-- Generation
-- Security
+- [system.admin.post_process](https://apis.io/channels/dreamfactory/system-admin-post-process/)
+- [system.admin.pre_process](https://apis.io/channels/dreamfactory/system-admin-pre-process/)
+- [system.app.post_process](https://apis.io/channels/dreamfactory/system-app-post-process/)
+- [system.app.pre_process](https://apis.io/channels/dreamfactory/system-app-pre-process/)
+- [system.role.post_process](https://apis.io/channels/dreamfactory/system-role-post-process/)
+- [system.role.pre_process](https://apis.io/channels/dreamfactory/system-role-pre-process/)
+- [system.service.post_process](https://apis.io/channels/dreamfactory/system-service-post-process/)
+- [system.service.pre_process](https://apis.io/channels/dreamfactory/system-service-pre-process/)
+- [system.user.post_process](https://apis.io/channels/dreamfactory/system-user-post-process/)
+- [system.user.pre_process](https://apis.io/channels/dreamfactory/system-user-pre-process/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://guide.dreamfactory.com/docs/using-the-system-apis/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/openapi/dreamfactory-system-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/asyncapi/dreamfactory-system-api-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-admin.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-app.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-role.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-service.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-schema/dreamfactory-user.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/dreamfactory/refs/heads/main/json-ld/dreamfactory-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Postman Collection](collections/dreamfactory-system-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dreamfactory-system-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Dreamfactory Agentic Access](https://apis.io/agentic-access/dreamfactory/dreamfactory-agentic-access/)
 
-- [LinkedIn](https://www.linkedin.com/company/dreamfactory-software)
-- [GitHub Organization](https://github.com/dreamfactorysoftware)
+#### JSON Schema (5)
+
+The data models the API reads and writes.
+
+- [DreamFactory Admin](https://apis.io/schemas/dreamfactory/dreamfactory-admin/)
+- [DreamFactory App](https://apis.io/schemas/dreamfactory/dreamfactory-app/)
+- [DreamFactory Role](https://apis.io/schemas/dreamfactory/dreamfactory-role/)
+- [DreamFactory Service](https://apis.io/schemas/dreamfactory/dreamfactory-service/)
+- [DreamFactory User](https://apis.io/schemas/dreamfactory/dreamfactory-user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Dreamfactory Context](https://apis.io/jsonld/dreamfactory/dreamfactory-context/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [DreamFactory System Admin API](https://apis.io/collections/dreamfactory/open-dreamfactory-admin-api/)
+- [DreamFactory System Admin App API](https://apis.io/collections/dreamfactory/open-dreamfactory-app-api/)
+- [DreamFactory System Admin AppGroup API](https://apis.io/collections/dreamfactory/open-dreamfactory-appgroup-api/)
+- [DreamFactory System Admin CORS API](https://apis.io/collections/dreamfactory/open-dreamfactory-cors-api/)
+- [DreamFactory System Admin Custom API](https://apis.io/collections/dreamfactory/open-dreamfactory-custom-api/)
+- [DreamFactory System Admin EmailTemplate API](https://apis.io/collections/dreamfactory/open-dreamfactory-emailtemplate-api/)
+- [DreamFactory System Admin Environment API](https://apis.io/collections/dreamfactory/open-dreamfactory-environment-api/)
+- [DreamFactory System Admin Event API](https://apis.io/collections/dreamfactory/open-dreamfactory-event-api/)
+- [DreamFactory System Admin Limit API](https://apis.io/collections/dreamfactory/open-dreamfactory-limit-api/)
+- [DreamFactory System Admin Lookup API](https://apis.io/collections/dreamfactory/open-dreamfactory-lookup-api/)
+- [DreamFactory System Admin Package API](https://apis.io/collections/dreamfactory/open-dreamfactory-package-api/)
+- [DreamFactory System Admin Role API](https://apis.io/collections/dreamfactory/open-dreamfactory-role-api/)
+- [DreamFactory System Admin ScriptType API](https://apis.io/collections/dreamfactory/open-dreamfactory-scripttype-api/)
+- [DreamFactory System Admin ServiceType API](https://apis.io/collections/dreamfactory/open-dreamfactory-servicetype-api/)
+- [DreamFactory Admin System API](https://apis.io/collections/dreamfactory/open-dreamfactory-system-api/)
+- [DreamFactory System Admin User API](https://apis.io/collections/dreamfactory/open-dreamfactory-user-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [DreamFactory — asyncapi rules](https://apis.io/rules/dreamfactory/dreamfactory-asyncapi-spectral-rules/)
+- [DreamFactory — jsonschema rules](https://apis.io/rules/dreamfactory/dreamfactory-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Dreamfactory Authentication](https://apis.io/security/dreamfactory/dreamfactory-authentication/)
+- [Dreamfactory Domain Security](https://apis.io/security/dreamfactory/dreamfactory-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Dreamfactory Plans Pricing](https://apis.io/plans/dreamfactory/dreamfactory-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Dreamfactory Rate Limits](https://apis.io/rate-limits/dreamfactory/dreamfactory-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Dreamfactory Finops](https://apis.io/finops/dreamfactory/dreamfactory-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.dreamfactory.com/)
-- [Documentation](https://docs.dreamfactory.com/?_gl=1*yrriox*_gcl_au*MTgxMzQyMDU4OC4xNzQ5MTM5NjA0)
-- [Case Studies](https://www.dreamfactory.com/stories)
-- [White Papers](https://www.dreamfactory.com/resources/whitepapers)
-- [Blog](https://blog.dreamfactory.com/)
-- [Guide](https://guide.dreamfactory.com/docs/)
-- [Partners](https://www.dreamfactory.com/partners)
+- [Documentation](https://docs.dreamfactory.com/)
 - [Support](https://www.dreamfactory.com/support)
-- [Terms of Service](https://www.dreamfactory.com/terms-of-use)
-- [Privacy Policy](https://www.dreamfactory.com/privacy-policy)
-- [Features](https://www.dreamfactory.com/features)
-- [Integrations](https://www.dreamfactory.com/connectors)
-- [Use Cases](undefined)
-- [L L Ms Txt](https://docs.dreamfactory.com/llms.txt)
+- [Blog](https://blog.dreamfactory.com/)
+- [Terms of service](https://www.dreamfactory.com/terms-of-use)
+- [Privacy policy](https://www.dreamfactory.com/privacy-policy)
+- [GitHub](https://github.com/dreamfactorysoftware)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 69.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 29.8 |
+| Access clarity | 28.9 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dreamfactory/](https://apis.io/providers/dreamfactory/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DreamFactory: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dreamfactory/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
